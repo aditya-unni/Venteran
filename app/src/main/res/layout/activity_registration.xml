@@ -112,7 +112,6 @@
         android:id="@+id/ccp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ccp_countryPreference="us,in"
         app:layout_constraintBottom_toTopOf="@+id/regbtn"
         app:layout_constraintEnd_toStartOf="@+id/reg_mobile"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +152,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reg_mobile" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/regbtn"
+        android:id="@+id/progreesbarforreg"
+        android:visibility="invisible"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regbtn"/>
 
     <ImageView
         android:id="@+id/imageView3"
