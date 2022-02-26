@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center">
+
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="match_parent"
@@ -28,6 +29,7 @@
             android:textAlignment="center"
             android:textColor="@color/aquablue"
             android:textSize="42sp"
+            android:translationY="50dp"
             android:textStyle="bold"></TextView>
     </RelativeLayout>
 

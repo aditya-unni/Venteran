@@ -12,13 +12,24 @@ public class Loading extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        Thread welcomeThread = new Thread() {
+
             @Override
             public void run() {
-                startActivity(new Intent(Loading.this, MainActivity.class));
-                finish();
+                try {
+                    super.run();
+                    sleep(3000);  //Delay of 10 seconds
+                } catch (Exception e) {
+
+                } finally {
+
+                    Intent i = new Intent(Loading.this,
+                            MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
             }
-        }, 5000);
+        };
+        welcomeThread.start();
     }
 }
