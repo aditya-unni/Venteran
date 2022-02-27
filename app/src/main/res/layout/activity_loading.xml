@@ -15,9 +15,8 @@
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:src="@mipmap/ic_image_logo"
-            ></ImageView>
+            android:layout_height="180dp"
+            android:src="@drawable/ic_image_venteranlogo"></ImageView>
 
         <TextView
             android:layout_width="match_parent"
