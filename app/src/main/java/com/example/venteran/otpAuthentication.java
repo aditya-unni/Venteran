@@ -67,7 +67,7 @@ public class otpAuthentication extends AppCompatActivity {
         });
     }
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential){
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){

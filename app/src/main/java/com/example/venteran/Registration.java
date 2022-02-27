@@ -84,6 +84,7 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
+
             }
 
             @Override
