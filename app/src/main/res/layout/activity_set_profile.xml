@@ -22,7 +22,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_above="@+id/username"
+        android:layout_above="@+id/getusername"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="80dp"
         android:id="@+id/getuserimage"
@@ -33,12 +33,13 @@
             android:layout_height="match_parent"
             android:src="@mipmap/ic_default_user"
             android:id="@+id/getuserimageinimageview"
+            app:cardCornerRadius="130dp"
             android:scaleType="centerCrop"/>
 
     </androidx.cardview.widget.CardView>
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/getusername"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
@@ -51,7 +52,7 @@
     <android.widget.Button
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_below="@id/username"
+        android:layout_below="@id/getusername"
         android:id="@+id/saveProfile"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"

@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "181311778487-25aq4nt5bgnv0cpgvgklb397fotimsfk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.venteran",
+            "certificate_hash": "da3767d64b11e70bf60a76ec695eedd383af621d"
+          }
+        },
+        {
+          "client_id": "181311778487-knb3q7rk5ovhrnjggpea12v7hopagtum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.venteran",
+            "certificate_hash": "81e79dcfa26cf40a1db26d0252fad03ae8e964dc"
+          }
+        },
+        {
           "client_id": "181311778487-mst502191q7jfp589h0entmkcdtvpfn5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
