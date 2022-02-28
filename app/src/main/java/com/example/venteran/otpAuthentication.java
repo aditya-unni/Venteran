@@ -38,6 +38,7 @@ public class otpAuthentication extends AppCompatActivity {
         mchangenumber=findViewById(R.id.changenumber);
         mverifyotp=findViewById(R.id.verifyotp);
         mgetotp=findViewById(R.id.getotp);
+        mgetotp.requestFocus();
         mprogressbarofotpauth=findViewById(R.id.progreesbarforauth);
 
         firebaseAuth=FirebaseAuth.getInstance();

@@ -10,12 +10,12 @@
 
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_launcher_background"
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:id="@+id/logo"/>
+        android:src="@drawable/ic_image_venteranlogo" />
 
     <TextView
         android:id="@+id/textheading"
