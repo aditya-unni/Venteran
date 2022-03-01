@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:text="Save your Profile"
+        android:text="@string/save_ur_profile"
         android:layout_above="@+id/getuserimage"
         android:layout_marginBottom="30dp"
         android:textColor="@color/aquablue"
@@ -46,20 +46,20 @@
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
         android:gravity="center"
-        android:hint="Enter your Username"
+        android:hint="@string/enter_username"
         android:inputType="textCapWords" />
 
     <android.widget.Button
         android:id="@+id/saveProfile"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_below="@id/username"
+
         android:layout_below="@id/getusername"
-        android:id="@+id/saveProfile"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@color/aquablue"
-        android:text="Save"
+        android:text="@string/save"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

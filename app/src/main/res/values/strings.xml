@@ -21,6 +21,16 @@
     <string name="Keyboard_text">start typing... </string>
 
     <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <!--set profile-->
+    <string name="save_ur_profile">Save Your Profile</string>
+    <string name="enter_username">Enter Your Username</string>
+    <string name="save">Save</string>
+
+
+
     <string name="menu_inbox">Inbox</string>
     <string name="menu_myprofile">My Profile</string>
     <string name="menu_addfriends">Add Friends</string>
