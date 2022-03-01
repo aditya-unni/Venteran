@@ -50,17 +50,18 @@
         android:inputType="textCapWords" />
 
     <android.widget.Button
+        android:id="@+id/saveProfile"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_below="@id/username"
         android:layout_below="@id/getusername"
         android:id="@+id/saveProfile"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
         android:background="@color/aquablue"
         android:text="Save"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        />
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/progreesbarofsetprofile"

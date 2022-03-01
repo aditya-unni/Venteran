@@ -6,39 +6,39 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_inbox"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_inbox"
             android:title="@string/menu_inbox" />
         <item
             android:id="@+id/nav_myprofile"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_myprofile"
             android:title="@string/menu_myprofile" />
         <item
             android:id="@+id/nav_addfriend"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_addfriend"
             android:title="@string/menu_addfriends" />
         <item
             android:id="@+id/nav_groups"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_groups"
             android:title="@string/menu_groups" />
         <item
             android:id="@+id/nav_contactus"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_contactus"
             android:title="@string/menu_contactus" />
         <item
-            android:id="@+id/nav_emergency"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_emergency" />
-        <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_settings"
             android:title="@string/menu_settings" />
         <item
+            android:id="@+id/nav_emergency"
+            android:icon="@drawable/ic_emergency"
+            android:title="@string/menu_emergency" />
+        <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_logout"
             android:title="@string/menu_logout" />
 
     </group>
