@@ -108,7 +108,7 @@ public class setProfile extends AppCompatActivity {
     }
     private void sendDataToRealTimeDatabase(){
         username=mgetusername.getText().toString().trim();
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference databaseReference=firebaseDatabase.getReference(firebaseAuth.getUid());
 
         userprofile muserprofile=new userprofile(username,firebaseAuth.getUid());
