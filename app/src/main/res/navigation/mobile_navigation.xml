@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.venteran.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_inbox"
+        android:name="com.example.venteran.chatFragment"
+        android:label="@string/menu_inbox"
+        tools:layout="@layout/fragment_chat_inbox"/>
 
     <fragment
         android:id="@+id/nav_slideshow"
