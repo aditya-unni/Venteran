@@ -17,7 +17,7 @@
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/Theme.Venteran.NoActionBar" />
         <activity
-            android:name=".Navigation"
+            android:name=".mNavigation"
             android:exported="false"
             android:label="@string/title_activity_navigation"
             android:theme="@style/Theme.Venteran.NoActionBar" />
