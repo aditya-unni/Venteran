@@ -73,7 +73,7 @@ public class chatFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Intent intent=new Intent(getActivity(),specificchat.class);
-                        intent.putExtra("name",firebasemodel.getUsername());
+                        intent.putExtra("username",firebasemodel.getUsername());
                         intent.putExtra("receiveruid",firebasemodel.getUid());
                         intent.putExtra("imageuri",firebasemodel.getImage());
                         startActivity(intent);

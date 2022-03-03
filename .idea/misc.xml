@@ -7,6 +7,9 @@
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/drawable-v21/ic_menu_gallery.xml" value="0.2703125" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/drawable/messagebackground.xml" value="0.21851851851851853" />
+        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/drawable/recieverchatdrawable.xml" value="0.2703125" />
+        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/drawable/senderchatdrawable.xml" value="0.2703125" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/font/alatsi.xml" value="0.284375" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
@@ -30,11 +33,11 @@
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/nav_header_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/recieverchatlayout.xml" value="0.2" />
+        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/senderchatlayout.xml" value="0.19170984455958548" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/menu/navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/menu/navigation_drawer.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.2703125" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_login.xml" value="0.291967044284243" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.2703125" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_logout.xml" value="0.2703125" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_loading.xml" value="0.25416666666666665" />
@@ -53,8 +56,6 @@
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/menu/navigation_drawer.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_registration.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_specificchat.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Slowqueso.DESKTOP-A4FP0F3/StudioProjects/Venteran/app/src/main/res/drawable/ic_default_user_foreground.xml" value="0.3285" />
         <entry key="..\:/Users/Slowqueso.DESKTOP-A4FP0F3/StudioProjects/Venteran/app/src/main/res/drawable/ic_image_venteranlogo.xml" value="0.3285" />
         <entry key="..\:/Users/Slowqueso.DESKTOP-A4FP0F3/StudioProjects/Venteran/app/src/main/res/layout/activity_loading.xml" value="0.1762917933130699" />
