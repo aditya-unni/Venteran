@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Venteran</string>
     <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="tnc">By Registering in, You agree with our <a href="https://www.ziegerscs.com">Terms and Privacy Policy</a></string>
+    <string name="register">Continue ></string>
+    <string name="tnc">By logging in, You agree with our <a href="https://www.ziegerscs.com">Terms and Privacy Policy</a></string>
     <string name="emailhint">Email Address</string>
     <string name="username">Username</string>
     <string name="passhint">Password</string>

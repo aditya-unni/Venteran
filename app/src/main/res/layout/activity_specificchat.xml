@@ -20,6 +20,6 @@
         android:layout_marginRight="0dp"
         android:background="@color/aquablue"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"/>
+        android:theme="?attr/actionBarTheme" />
 
 </RelativeLayout>

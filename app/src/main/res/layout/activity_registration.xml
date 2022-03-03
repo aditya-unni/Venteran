@@ -14,7 +14,7 @@
         android:layout_marginBottom="15dp"
         android:fontFamily="@font/alatsi"
         android:gravity="center"
-        android:text="@string/register"
+        android:text="@string/login"
         android:textColor="@color/aquablue"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -27,126 +27,62 @@
         android:layout_width="233dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="12dp"
         android:fontFamily="@font/josefin_sans_bold"
         android:gravity="center"
         android:text="@string/tnc"
         android:textColorLink="@color/aquablue"
         android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/reg_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-    <EditText
-        android:id="@+id/reg_user"
-        android:layout_width="331dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="3dp"
-        android:ems="10"
-        android:fontFamily="@font/alatsi"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        android:textColor="@color/grey"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/reg_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/reg_email"
-        android:layout_width="331dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
-        android:ems="10"
-        android:fontFamily="@font/alatsi"
-        android:hint="@string/emailhint"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/grey"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/reg_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_user" />
-
-    <EditText
-        android:id="@+id/reg_pass"
-        android:layout_width="331dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
-        android:ems="10"
-        android:fontFamily="@font/alatsi"
-        android:hint="@string/passhint"
-        android:inputType="textPassword"
-        android:textColor="@color/grey"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/reg_confirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_email" />
-
-    <EditText
-        android:id="@+id/reg_confirm"
-        android:layout_width="331dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
-        android:ems="10"
-        android:fontFamily="@font/alatsi"
-        android:hint="@string/confirm"
-        android:inputType="textPassword"
-        android:textColor="@color/grey"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/reg_mobile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_pass" />
-
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/regbtn"
-        app:layout_constraintEnd_toStartOf="@+id/reg_mobile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_confirm"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="26dp"
         app:ccp_areaCodeDetectedCountry="true"
         app:ccp_autoDetectCountry="true"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/reg_mobile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/reg_mobile"
-        android:layout_width="250dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="39dp"
+        android:layout_width="183dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="14dp"
         android:ems="10"
         android:fontFamily="@font/alatsi"
         android:hint="@string/mobile"
         android:inputType="phone"
         android:textColor="@color/grey"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/regbtn"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ccp"
-        app:layout_constraintTop_toBottomOf="@+id/reg_confirm" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.586" />
 
     <Button
         android:id="@+id/regbtn"
         android:layout_width="331sp"
         android:layout_height="52sp"
         android:layout_marginTop="35dp"
+        android:layout_marginBottom="21dp"
         android:gravity="center"
         android:text="@string/register"
         android:textAllCaps="false"
         android:textSize="15sp"
         app:backgroundTint="@color/aquablue"
+        app:layout_constraintBottom_toTopOf="@+id/progreesbarforreg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reg_mobile" />
@@ -171,6 +107,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_footer" />
+        app:srcCompat="@drawable/ic_footer"
+        tools:ignore="VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
