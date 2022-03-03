@@ -115,10 +115,11 @@ public class specificchat extends AppCompatActivity {
 
 
         DatabaseReference databaseReference=firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
-        messagesAdapter=new MessagesAdapter(specificchat.this,messagesArrayList);
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 messagesArrayList.clear();
                 for(DataSnapshot snapshot1:snapshot.getChildren())
                 {
@@ -127,6 +128,8 @@ public class specificchat extends AppCompatActivity {
                 }
                 messagesAdapter.notifyDataSetChanged();
             }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

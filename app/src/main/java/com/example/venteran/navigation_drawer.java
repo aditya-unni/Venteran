@@ -3,7 +3,6 @@ package com.example.venteran;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -76,16 +75,16 @@ public class navigation_drawer extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
     @Override
-    protected void onStop() {
-        super.onStop();
-        DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-        documentReference.update("status","Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
+    protected void onDestroy() {
+        super.onDestroy();
+
+        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(),"Now User is Offline",Toast.LENGTH_SHORT).show();
+                //user is offline
             }
         });
-
 
 
     }
@@ -97,7 +96,7 @@ public class navigation_drawer extends AppCompatActivity {
         documentReference.update("status","Online").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(),"Now User is Online",Toast.LENGTH_SHORT).show();
+                //user is online
             }
         });
 
