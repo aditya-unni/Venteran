@@ -29,7 +29,7 @@ public class chatFragment extends Fragment {
     LinearLayoutManager linearLayoutManager;
     private FirebaseAuth firebaseAuth;
 
-    ImageView mimageviewofuser;
+
 
     FirestoreRecyclerAdapter<firebasemodel,NoteViewHolder> chatAdapter;
 
@@ -58,7 +58,7 @@ public class chatFragment extends Fragment {
                 noteViewHolder.particularusername.setText(firebasemodel.getUsername());
                 String uri=firebasemodel.getImage();
 
-                Picasso.get().load(uri).into(mimageviewofuser);
+                Picasso.get().load(uri).into(noteViewHolder.mimageviewofuser);
                 if(firebasemodel.getStatus().equals("Online"))
                 {
                     noteViewHolder.statusofuser.setText(firebasemodel.getStatus());
@@ -67,6 +67,7 @@ public class chatFragment extends Fragment {
                 else
                 {
                     noteViewHolder.statusofuser.setText(firebasemodel.getStatus());
+                    noteViewHolder.statusofuser.setTextColor(Color.RED);
                 }
 
                 noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +115,7 @@ public class chatFragment extends Fragment {
 
         private TextView particularusername;
         private TextView statusofuser;
+        private ImageView mimageviewofuser;
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
