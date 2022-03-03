@@ -1,9 +1,13 @@
 package com.example.venteran;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -53,7 +57,7 @@ public class navigation_drawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_inbox, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_inbox, R.id.nav_slideshow, R.id.nav_logout)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
@@ -101,6 +105,31 @@ public class navigation_drawer extends AppCompatActivity {
 
     }
 
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch(item.getItemId()) {
+//            case R.id.nav_logout:
+//                Intent intent = new Intent(getApplicationContext(), Logout.class);
+//                startActivity(intent);
+//                Toast.makeText(getApplicationContext(), "Toast Testing", Toast.LENGTH_SHORT).show();
+//                return true;
+//            default:
+//                Toast.makeText(getApplicationContext(), "Button click testing", Toast.LENGTH_SHORT).show();
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
-
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.nav_logout:
+                Intent intent = new Intent(getApplicationContext(), Logout.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Toast Testing", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                Toast.makeText(getApplicationContext(), "Button click testing", Toast.LENGTH_SHORT).show();
+                return super.onContextItemSelected(item);
+        }
+    }
 }

@@ -14,6 +14,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Logout extends AppCompatActivity {
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        alert("Are you sure you want to logout?\nClick 'OK' to proceed");
+    }
+
     public void alert(String message) {
         new AlertDialog.Builder(Logout.this)
                 .setTitle("Logout")
@@ -33,11 +39,5 @@ public class Logout extends AppCompatActivity {
                     }
                 })
                 .show();
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        alert("Are you sure you want to logout?\nClick 'OK' to proceed");
     }
 }

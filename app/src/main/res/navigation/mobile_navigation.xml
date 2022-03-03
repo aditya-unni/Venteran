@@ -21,6 +21,12 @@
         android:id="@+id/nav_slideshow"
         android:name="com.example.venteran.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_logout" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.venteran.Logout"
+        android:label="Logout"
+        tools:layout="@layout/activity_registration" />
 
 </navigation>
