@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_registration.xml" value="0.2848731884057971" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/content_navigation_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_chat_inbox.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_logout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.2703125" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_logout.xml" value="0.2703125" />
