@@ -140,7 +140,8 @@ public class navigation_drawer extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(),Registration.class));
+                        startActivity(new Intent(getApplicationContext(), Registration.class));
+
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -150,8 +151,7 @@ public class navigation_drawer extends AppCompatActivity {
                     }
                 })
                 .show();
+
     }
-
-
 
 }

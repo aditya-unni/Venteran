@@ -104,6 +104,7 @@ public class Registration extends AppCompatActivity {
                 Intent intent = new Intent(Registration.this,otpAuthentication.class);
                 intent.putExtra("otp",codesent);
                 startActivity(intent);
+                finish();
 
             }
         };
