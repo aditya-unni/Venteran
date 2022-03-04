@@ -1,8 +1,13 @@
 package com.example.venteran;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -53,12 +58,21 @@ public class navigation_drawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_inbox, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_inbox)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        MenuItem logoutMenuItem = navigationView.getMenu().findItem(R.id.nav_logout);
+        logoutMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                alert("Are you sure you want to logout?\nClick 'OK' to proceed");
+                return true;
+            }
+        });
     }
 
     @Override
@@ -74,6 +88,8 @@ public class navigation_drawer extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -85,8 +101,22 @@ public class navigation_drawer extends AppCompatActivity {
                 //user is offline
             }
         });
-
     }
+
+
+
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch(item.getItemId()) {
+//            case R.id.nav_logout:
+//                alert("Are you sure you want to logout?\nClick 'OK' to proceed");
+//                return true;
+//            default:
+//                Toast.makeText(getApplicationContext(), "testing", Toast.LENGTH_SHORT).show();
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+
 
     @Override
     protected void onStart() {
@@ -99,6 +129,27 @@ public class navigation_drawer extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public void alert(String message) {
+        new AlertDialog.Builder(navigation_drawer.this)
+                .setTitle("Logout")
+                .setMessage(message)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getApplicationContext(),Registration.class));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "Logout Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .show();
     }
 
 
