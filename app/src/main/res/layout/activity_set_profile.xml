@@ -9,14 +9,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/save_ur_profile"
         android:layout_above="@+id/getuserimage"
-        android:layout_marginBottom="30dp"
-        android:textColor="@color/aquablue"
-        android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginBottom="30dp"
+        android:text="@string/save_ur_profile"
+        android:textColor="@color/aquablue"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="130dp"
