@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="30dp"
     android:layout_marginEnd="30dp"
     android:padding="15dp"
     android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/contrastWhite">
+    android:background="@drawable/alert_background">
 
     <TextView
         android:id="@+id/Report"
@@ -16,22 +16,23 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/alatsi"
         android:text="Report Sachin"
-        android:textColor="@color/aquapurple"
-        android:textSize="34sp"
+        android:textColor="@color/aquablue"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndof="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/report_msg"
-        android:layout_width="322dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/alatsi"
         android:text="@string/report_msg"
         android:textColor="@color/halfgrey"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Report" />
 
@@ -39,22 +40,27 @@
         android:id="@+id/cancelbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="0dp"
+        android:background=""
         android:fontFamily="@font/alatsi"
         android:text="@string/cancel"
+        android:textColor="@color/halfgrey"
         app:layout_constraintTop_toBottomOf="@id/report_msg"
-        tools:layout_editor_absoluteX="131dp" />
+        tools:layout_editor_absoluteX="109dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/reportbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="0dp"
+        android:background=""
         android:fontFamily="@font/alatsi"
         android:text="@string/report"
-        app:backgroundTint="@android:color/holo_red_dark"
+        android:textColor="@color/red"
         app:layout_constraintStart_toEndOf="@+id/cancelbtn"
+
         app:layout_constraintTop_toBottomOf="@id/report_msg" />
 
 
