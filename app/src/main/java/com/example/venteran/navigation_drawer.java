@@ -139,9 +139,10 @@ public class navigation_drawer extends AppCompatActivity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+                        documentReference.update("status", "Offline");
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(getApplicationContext(), Registration.class));
-
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
