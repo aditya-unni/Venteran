@@ -41,7 +41,7 @@ public class setProfile extends AppCompatActivity {
     private CardView mgetuserimage;
     private ImageView mgetuserimageinimageview;
     private static int PICK_IMAGE=123;
-    private Uri imagepath;
+    private Uri imagepath=null;
 
     private EditText mgetusername;
 
@@ -54,7 +54,8 @@ public class setProfile extends AppCompatActivity {
     private StorageReference storageReference;
     private FirebaseFirestore firebaseFirestore;
 
-    private String ImageUriAccessToken;
+    private String ImageUriAccessToken=null;
+
 
     ProgressBar mprogressbarofsetprofile;
 
@@ -62,6 +63,9 @@ public class setProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_set_profile);
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -76,6 +80,26 @@ public class setProfile extends AppCompatActivity {
         mprogressbarofsetprofile=findViewById(R.id.progreesbarofsetprofile);
 
 
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        DatabaseReference userNameRef = rootRef.child(firebaseAuth.getUid());
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    Intent intent = new Intent(setProfile.this,navigation_drawer.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DATABASE ERROR", databaseError.getMessage()); //Don't ignore errors!
+            }
+        };
+        userNameRef.addValueEventListener(eventListener);
 
 
 
@@ -94,13 +118,13 @@ public class setProfile extends AppCompatActivity {
                 if(username.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Name is Empty",Toast.LENGTH_LONG).show();
                 }
-                else if (imagepath==null){
-                    Toast.makeText(getApplicationContext(),"Image is Empty",Toast.LENGTH_LONG).show();
-                }
+//                else if (imagepath==null){
+//                    Toast.makeText(getApplicationContext(),"Image is Empty",Toast.LENGTH_LONG).show();
+//                }
                 else {
                     mprogressbarofsetprofile.setVisibility(View.VISIBLE);
                     sendDataForNewUser();
-                    mprogressbarofsetprofile.setVisibility(View.VISIBLE);
+                    mprogressbarofsetprofile.setVisibility(View.INVISIBLE);
                     Intent intent=new Intent(setProfile.this,navigation_drawer.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -123,7 +147,12 @@ public class setProfile extends AppCompatActivity {
         userprofile muserprofile=new userprofile(username,firebaseAuth.getUid());
         databaseReference.setValue(muserprofile);
         Toast.makeText(getApplicationContext(), "User Profile Added Successfully", Toast.LENGTH_SHORT).show();
-        sendImagetoStorage();
+        if (imagepath==null){
+            sendDataTocloudFirestore();
+        }
+        else {
+            sendImagetoStorage();
+        }
     }
 
     private void sendImagetoStorage(){
@@ -178,7 +207,7 @@ public class setProfile extends AppCompatActivity {
         userdata.put("username",username);
         userdata.put("image",ImageUriAccessToken);
         userdata.put("uid",firebaseAuth.getUid());
-        userdata.put("status","Online");
+        userdata.put("status","Offline");
 
         documentReference.set(userdata).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -200,27 +229,27 @@ public class setProfile extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        DatabaseReference rootRef = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-        DatabaseReference userNameRef = rootRef.child(firebaseAuth.getUid());
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    Intent intent = new Intent(setProfile.this,navigation_drawer.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("DATABASE ERROR", databaseError.getMessage()); //Don't ignore errors!
-            }
-        };
-        userNameRef.addValueEventListener(eventListener);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        DatabaseReference rootRef = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+//        DatabaseReference userNameRef = rootRef.child(firebaseAuth.getUid());
+//        ValueEventListener eventListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists()) {
+//                    Intent intent = new Intent(setProfile.this,navigation_drawer.class);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                    startActivity(intent);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.d("DATABASE ERROR", databaseError.getMessage()); //Don't ignore errors!
+//            }
+//        };
+//        userNameRef.addValueEventListener(eventListener);
+//    }
 }
