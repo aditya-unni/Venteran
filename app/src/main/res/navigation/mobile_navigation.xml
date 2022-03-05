@@ -13,6 +13,11 @@
         android:label="@string/menu_inbox"
         tools:layout="@layout/fragment_chat_inbox"/>
 
+    <fragment
+        android:id="@+id/nav_myprofile"
+        android:name="com.example.venteran.ProfileFragment"
+        android:label="@string/menu_myprofile"
+        tools:layout="@layout/fragment_profile"/>
 
 
 </navigation>
