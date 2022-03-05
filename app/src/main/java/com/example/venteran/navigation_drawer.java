@@ -134,6 +134,29 @@ public class navigation_drawer extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+        documentReference.update("status","Online").addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //user is online
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+        documentReference.update("status","Online").addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //user is online
+            }
+        });
+    }
 
     public void alert(String message) {
         new AlertDialog.Builder(navigation_drawer.this)

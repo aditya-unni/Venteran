@@ -97,9 +97,10 @@ public class ProfileFragment extends Fragment {
         mmovetoupdateprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent=new Intent(ProfileActivity.this,UpdateProfile.class);
-//                intent.putExtra("nameofuser",mviewusername.getText().toString());
-//                startActivity(intent);
+                Intent intent=new Intent(getActivity(),UpdateProfile.class);
+                intent.putExtra("nameofuser",mviewusername.getText().toString());
+                startActivity(intent);
+
             }
         });
         return v;
