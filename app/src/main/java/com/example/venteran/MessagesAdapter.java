@@ -62,9 +62,6 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
 
 
-
-
-
     }
 
 
@@ -121,8 +118,5 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             timeofmessage=itemView.findViewById(R.id.timeofmessage);
         }
     }
-
-
-
 
 }
