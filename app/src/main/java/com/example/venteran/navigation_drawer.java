@@ -24,6 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
 public class navigation_drawer extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
