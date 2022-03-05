@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,8 +20,11 @@ import androidx.cardview.widget.CardView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -71,6 +75,10 @@ public class setProfile extends AppCompatActivity {
         msaveprofile=findViewById(R.id.saveProfile);
         mprogressbarofsetprofile=findViewById(R.id.progreesbarofsetprofile);
 
+
+
+
+
         mgetuserimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,9 +94,9 @@ public class setProfile extends AppCompatActivity {
                 if(username.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Name is Empty",Toast.LENGTH_LONG).show();
                 }
-//                else if (imagepath==null){
-//                    Toast.makeText(getApplicationContext(),"Image is Empty",Toast.LENGTH_LONG).show();
-//                }
+                else if (imagepath==null){
+                    Toast.makeText(getApplicationContext(),"Image is Empty",Toast.LENGTH_LONG).show();
+                }
                 else {
                     mprogressbarofsetprofile.setVisibility(View.VISIBLE);
                     sendDataForNewUser();
@@ -192,5 +200,27 @@ public class setProfile extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        DatabaseReference userNameRef = rootRef.child(firebaseAuth.getUid());
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    Intent intent = new Intent(setProfile.this,navigation_drawer.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
 
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DATABASE ERROR", databaseError.getMessage()); //Don't ignore errors!
+            }
+        };
+        userNameRef.addValueEventListener(eventListener);
+    }
 }

@@ -31,7 +31,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(viewType==ITEM_SEND)
         {
-            View view= LayoutInflater.from(context).inflate(R.layout.senderchatlayout,parent,false);
+            View view = LayoutInflater.from(context).inflate(R.layout.senderchatlayout,parent,false);
             return new SenderViewHolder(view);
         }
         else
