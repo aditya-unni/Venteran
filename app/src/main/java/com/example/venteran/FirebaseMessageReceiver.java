@@ -32,7 +32,7 @@ public class FirebaseMessageReceiver
         RemoteViews remoteViews = new RemoteViews(
                 getApplicationContext().getPackageName(),
                 R.layout.notification);
-        remoteViews.setTextViewText(R.id.title, title);
+        remoteViews.setTextViewText(R.id.notification, title);
         remoteViews.setTextViewText(R.id.message, message);
         remoteViews.setImageViewResource(R.id.icon,
                 R.drawable.ic_image_venteranlogo);

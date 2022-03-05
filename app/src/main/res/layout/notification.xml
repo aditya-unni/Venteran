@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="You got a new message, Please Check!"
-            android:textColor="#000"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <TextView
