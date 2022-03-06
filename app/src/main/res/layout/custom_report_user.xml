@@ -18,10 +18,8 @@
         android:text="Report Sachin"
         android:textColor="@color/aquablue"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndof="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/report_msg"
         android:layout_width="304dp"
@@ -40,28 +38,25 @@
         android:id="@+id/cancelbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:background=""
+        android:backgroundTint="@color/contrastWhite"
         android:fontFamily="@font/alatsi"
         android:text="@string/cancel"
         android:textColor="@color/halfgrey"
         app:layout_constraintTop_toBottomOf="@id/report_msg"
-        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteX="91dp"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/reportbtn"
         android:layout_width="wrap_content"
+        android:elevation="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="0dp"
-        android:background=""
+        android:backgroundTint="@color/contrastWhite"
         android:fontFamily="@font/alatsi"
         android:text="@string/report"
         android:textColor="@color/red"
         app:layout_constraintStart_toEndOf="@+id/cancelbtn"
-
         app:layout_constraintTop_toBottomOf="@id/report_msg" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
