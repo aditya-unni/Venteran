@@ -29,7 +29,6 @@
     <string name="enter_username">Enter Your Username</string>
     <string name="save">Save</string>
 
-
     <string name="menu_inbox">Inbox</string>
     <string name="menu_myprofile">My Profile</string>
     <string name="menu_addfriends">Add Friends</string>
@@ -41,10 +40,18 @@
     
     <string name="menu_replypvt">Reply Privately</string>
     <string name="menu_report_user">Report User</string>
-    <string name="report_msg">This Message will be forwarded to Venteran. This contact will not be notified</string>
 
     <string name="cancel">Cancel</string>
     <string name="report">Report</string>
+    <string name="delete">Delete</string>
+    <string name="proceed">Proceed</string>
+    <string name="report_head">Report Sachin</string>
+    <string name="delete_head">Delete Message ?</string>
+    <string name="report_msg">This Message will be forwarded to Venteran. This contact will not be notified</string>
+    <string name="delete_msg">Are you Sure you Want to Delete ??</string>
+    <string name="emergency_head">Are you Sure ?</string>
+    <string name="emergency_msg">The following button should only be used in the case of emergencies or self harm,any misuse of this option is bannable and is not advised.</string>
+    <string name="radio_btn">I agree</string>
 
     <string name="title_activity_navigation">Navigation</string>
 </resources>
