@@ -21,9 +21,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +47,10 @@ import okhttp3.WebSocketListener;
 
 public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     private String username;
+    private String role;
+
+
+
     private WebSocket webSocket;
     private String SERVER_PATH = "ws://venteran-backend.herokuapp.com";
     private EditText messageEdit;
@@ -53,6 +61,11 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     FirebaseUser firebaseUser;
     String displayName = "";
     Intent intent;
+
+
+
+
+    FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +82,24 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(messageAdapter);
         initiateSocketConnection();
+
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
+
+
+
+        DocumentReference dref=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+        dref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                firebasemodel Firebasemodel=documentSnapshot.toObject(firebasemodel.class);
+                username=Firebasemodel.getUsername();
+                role=Firebasemodel.getRole();
+                Log.d("CUSTOM",Firebasemodel.getUsername());
+            }
+        });
+
     }
     private void initiateSocketConnection() {
 
@@ -127,7 +158,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                     try{
                         JSONObject textData = new JSONObject(text);
                         JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("username","Random");
+                        jsonObject.put("username",username);
                         jsonObject.put("message", textData.getString("message"));
                         jsonObject.put("isSent", false);
                         messageAdapter.addItem(jsonObject);
