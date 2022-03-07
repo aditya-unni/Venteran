@@ -103,6 +103,7 @@ public class Registration extends AppCompatActivity {
                 codesent=s;
                 Intent intent = new Intent(Registration.this,otpAuthentication.class);
                 intent.putExtra("otp",codesent);
+                intent.putExtra("phone", phonenumber);
                 startActivity(intent);
                 finish();
 

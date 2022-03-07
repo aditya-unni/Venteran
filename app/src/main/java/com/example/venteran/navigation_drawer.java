@@ -24,6 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
 public class navigation_drawer extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
@@ -58,7 +61,7 @@ public class navigation_drawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_inbox)
+                 R.id.nav_inbox)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
@@ -131,6 +134,29 @@ public class navigation_drawer extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+        documentReference.update("status","Online").addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //user is online
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+        documentReference.update("status","Online").addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //user is online
+            }
+        });
+    }
 
     public void alert(String message) {
         new AlertDialog.Builder(navigation_drawer.this)
@@ -139,9 +165,10 @@ public class navigation_drawer extends AppCompatActivity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+                        documentReference.update("status", "Offline");
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(getApplicationContext(), Registration.class));
-
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

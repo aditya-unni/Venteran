@@ -15,4 +15,7 @@
     <color name="colorPrimary">#449af5</color>
     <color name="colorAccent">#ffff</color>
     <color name="contrastWhite">#ECECEC</color>
+    <color name="aquapurple">#2953AC</color>
+    <color name="halfgrey">#716F6F</color>
+    <color name="red">#FF0000</color>
 </resources>

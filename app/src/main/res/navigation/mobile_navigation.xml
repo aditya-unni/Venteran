@@ -5,11 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_inbox">
 
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.venteran.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+
 
     <fragment
         android:id="@+id/nav_inbox"
@@ -18,15 +14,10 @@
         tools:layout="@layout/fragment_chat_inbox"/>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.venteran.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_logout" />
+        android:id="@+id/nav_myprofile"
+        android:name="com.example.venteran.ProfileFragment"
+        android:label="@string/menu_myprofile"
+        tools:layout="@layout/fragment_profile"/>
 
-    <fragment
-        android:id="@+id/nav_logout"
-        android:name="com.example.venteran.Logout"
-        android:label="Logout"
-        tools:layout="@layout/activity_registration" />
 
 </navigation>

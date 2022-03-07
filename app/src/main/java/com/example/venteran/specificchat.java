@@ -150,7 +150,7 @@ public class specificchat extends AppCompatActivity {
 
         mnameofspecificuser.setText(mrecievername);
         String uri=intent.getStringExtra("imageuri");
-        if(uri.isEmpty())
+        if(uri==null)
         {
             Toast.makeText(getApplicationContext(),"null is recieved",Toast.LENGTH_SHORT).show();
         }

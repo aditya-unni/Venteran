@@ -57,8 +57,9 @@ public class chatFragment extends Fragment {
 
                 noteViewHolder.particularusername.setText(firebasemodel.getUsername());
                 String uri=firebasemodel.getImage();
-
-                Picasso.get().load(uri).into(noteViewHolder.mimageviewofuser);
+                if (uri!=null) {
+                    Picasso.get().load(uri).into(noteViewHolder.mimageviewofuser);
+                }
                 if(firebasemodel.getStatus().equals("Online"))
                 {
                     noteViewHolder.statusofuser.setText(firebasemodel.getStatus());
