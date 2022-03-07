@@ -28,7 +28,8 @@
         android:textAlignment="center"
         android:textColor="#6e6e6e"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <EditText
         android:id="@+id/getotp"
