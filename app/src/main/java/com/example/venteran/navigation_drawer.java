@@ -52,6 +52,9 @@ public class navigation_drawer extends AppCompatActivity {
         firebaseFirestore=FirebaseFirestore.getInstance();
 
 
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -82,6 +85,16 @@ public class navigation_drawer extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 alert("Are you sure you want to logout?\nClick 'OK' to proceed");
+                return true;
+            }
+        });
+
+        MenuItem emergencyMenuItem = navigationView.getMenu().findItem(R.id.nav_emergency);
+        emergencyMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                CustomEmergencyDialog ced = new CustomEmergencyDialog(navigation_drawer.this);
+                ced.show();
                 return true;
             }
         });
@@ -169,17 +182,17 @@ public class navigation_drawer extends AppCompatActivity {
 
 
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                //user is offline
-            }
-        });
-    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+//        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                //user is offline
+//            }
+//        });
+//    }
 
     public void alert(String message) {
         new AlertDialog.Builder(navigation_drawer.this)
@@ -201,7 +214,8 @@ public class navigation_drawer extends AppCompatActivity {
                     }
                 })
                 .show();
-
     }
+
+
 
 }
