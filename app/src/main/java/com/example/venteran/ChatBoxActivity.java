@@ -1,11 +1,7 @@
 package com.example.venteran;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,9 +28,6 @@ import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,11 +37,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -74,9 +61,6 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     FirebaseUser firebaseUser;
     String displayName = "";
     Intent intent;
-    StorageReference storageReference;
-    FirebaseStorage firebaseStorage;
-    String ImageURIacessToken;
 
 
 
@@ -86,6 +70,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_chat_box);
         Toast.makeText(ChatBoxActivity.this,
                 "Loaded ChatActivity",
@@ -97,7 +82,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(messageAdapter);
         initiateSocketConnection();
-        firebaseStorage = FirebaseStorage.getInstance();
+
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
@@ -112,15 +97,6 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 username=Firebasemodel.getUsername();
                 role=Firebasemodel.getRole();
                 Log.d("CUSTOM",Firebasemodel.getUsername());
-            }
-        });
-        storageReference=firebaseStorage.getReference();
-        storageReference.child("Images").child(firebaseAuth.getUid()).child("Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                ImageURIacessToken=uri.toString();
-
-
             }
         });
 
@@ -182,10 +158,8 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                     try{
                         JSONObject textData = new JSONObject(text);
                         JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/venteran-56fbc.appspot.com/o/Images%2F83yoCesmvFXcQmcEgJmEHbuZEti2%2FProfile%20Pic?alt=media&token=bee68a0a-1427-4f9c-b9ac-042761de7fcb");
-                        jsonObject.put("username",textData.getString("username"));
+                        jsonObject.put("username",username);
                         jsonObject.put("message", textData.getString("message"));
-                        jsonObject.put("timeStamp", textData.getString("timeStamp"));
                         jsonObject.put("isSent", false);
                         messageAdapter.addItem(jsonObject);
                         recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
@@ -212,13 +186,9 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
             if(messageEdit.getText().toString() != ""){
                 JSONObject jsonObject = new JSONObject();
                 Toast.makeText(ChatBoxActivity.this, "Clicked ",Toast.LENGTH_SHORT).show();
-                Date date = new Date();
-                DateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     jsonObject.put("username", username);
                     jsonObject.put("message", messageEdit.getText().toString());
-                    jsonObject.put("timeStamp", format.format(date));
-                    jsonObject.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/venteran-56fbc.appspot.com/o/Images%2F83yoCesmvFXcQmcEgJmEHbuZEti2%2FProfile%20Pic?alt=media&token=bee68a0a-1427-4f9c-b9ac-042761de7fcb");
                     jsonObject.put("isSent", true);
                     webSocket.send(jsonObject.toString());
                     messageAdapter.addItem(jsonObject);
