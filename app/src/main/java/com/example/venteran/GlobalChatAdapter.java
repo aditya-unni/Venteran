@@ -42,13 +42,13 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
     private class ReceivedMessageHolder extends RecyclerView.ViewHolder{
         TextView receiverTxt;
         TextView nameTxt;
-        TextView receiverTime;
+        TextView timeofmessage;
 
         public ReceivedMessageHolder(@NonNull View itemView) {
             super(itemView);
             nameTxt=itemView.findViewById(R.id.text_reciever);
             receiverTxt=itemView.findViewById(R.id.text_bubblereciver);
-            receiverTime=itemView.findViewById(R.id.text_Receivertime);
+            timeofmessage=itemView.findViewById(R.id.timeofmessage);
             receiverImage=itemView.findViewById(R.id.image_reciever);
         }
     }
@@ -104,7 +104,7 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
                     ReceivedMessageHolder messageHolder = (ReceivedMessageHolder) holder;
                     messageHolder.nameTxt.setText(message.getString("username"));
                     messageHolder.receiverTxt.setText(message.getString("message"));
-                    messageHolder.receiverTime.setText(message.getString("timeStamp"));
+                    messageHolder.timeofmessage.setText(message.getString("timeStamp"));
                     Picasso.get().load(message.getString("imageUrl")).into(receiverImage);
                 }
             }catch (JSONException e) {
