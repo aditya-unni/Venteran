@@ -38,20 +38,5 @@
             android:text="20:09"
             android:textColor="#434343"
             android:textSize="10sp" />
-
-
-
-
-
-
-
-
     </RelativeLayout>
-
-
-
-
-
-
-
 </RelativeLayout>

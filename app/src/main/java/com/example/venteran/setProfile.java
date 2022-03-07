@@ -130,7 +130,6 @@ public class setProfile extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-
             }
         });
     }

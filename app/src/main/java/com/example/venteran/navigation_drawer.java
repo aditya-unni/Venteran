@@ -3,6 +3,7 @@ package com.example.venteran;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,11 +17,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+
 import com.example.venteran.databinding.ActivityNavigationDrawerBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,6 +37,8 @@ public class navigation_drawer extends AppCompatActivity {
 
 
     FirebaseFirestore firebaseFirestore;
+    FirebaseUser firebaseUser;
+    String toSendUsername;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -42,9 +48,6 @@ public class navigation_drawer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        firebaseFirestore=FirebaseFirestore.getInstance();
-        firebaseAuth=FirebaseAuth.getInstance();
-
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -52,8 +55,10 @@ public class navigation_drawer extends AppCompatActivity {
         binding.appBarNavigationDrawer.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent chatBox = new Intent(navigation_drawer.this, ChatBoxActivity.class);
+                String USERNAME = "username";
+                chatBox.putExtra(USERNAME, "Slowqueso");
+                startActivity(chatBox);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
