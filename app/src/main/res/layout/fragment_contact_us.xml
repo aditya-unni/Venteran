@@ -29,9 +29,9 @@
         android:hint="@string/emailhint"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="151dp" />
+        tools:layout_editor_absoluteY="153dp" />
 
     <TextView
         android:id="@+id/contactusq1"
@@ -114,8 +114,8 @@
 
     <ImageView
         android:id="@+id/imgmail"
-        android:layout_width="42dp"
-        android:layout_height="36dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         app:srcCompat="@drawable/ic_inbox"
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="160dp" />
