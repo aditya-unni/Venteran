@@ -12,9 +12,9 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:paddingTop="10dp"
             android:src="@drawable/ic_image_venteranlogo" />
     </LinearLayout>
 
@@ -29,16 +29,18 @@
             android:id="@+id/notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You got a new message, Please Check!"
-            android:textColor="#FFFFFF"
+            android:text="Title"
+            android:textColor="@color/aquablue"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Number of messages"
-            android:textSize="15sp" />
+            android:text="Sub Title"
+            android:textColor="@color/grey"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
