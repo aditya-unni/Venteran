@@ -72,7 +72,7 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
                     dismiss();
                     break;
                 case R.id.proceedbtn:
-                    Toast.makeText(c , "Radio Clicked and Proceed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c , "Emergency notified. Please wait for some time.", Toast.LENGTH_SHORT).show();
                     dismiss();
                     break;
             }

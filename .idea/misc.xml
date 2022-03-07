@@ -82,13 +82,19 @@
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_set_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_update_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/chatviewlayout.xml" value="0.1" />
+        <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/content_navigation_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_delete_msg.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_emergency.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_report_user.xml" value="0.2" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/datechatlayout.xml" value="0.4" />
+        <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/demo.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_profile.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/notification.xml" value="0.4" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/recieverchatlayout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/senderchatlayout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/xml/preferences.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
