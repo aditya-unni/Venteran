@@ -82,16 +82,15 @@
 
 
     <EditText
+        android:id="@+id/getnewusername"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:inputType="textCapWords"
-        android:hint="Enter Your New Name Here"
         android:layout_centerInParent="true"
-        android:id="@+id/getnewusername"
-        android:layout_centerHorizontal="true"
         android:layout_marginLeft="90dp"
         android:layout_marginRight="90dp"
-        >
+        android:hint="Enter Your New Name Here"
+        android:textColor="@color/black"
+        android:inputType="textCapWords">
 
     </EditText>
 
