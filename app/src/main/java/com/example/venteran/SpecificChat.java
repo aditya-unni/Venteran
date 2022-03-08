@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class specificchat extends AppCompatActivity implements MessagesAdapter.OnUserClickListener {
+public class SpecificChat extends AppCompatActivity implements MessagesAdapter.OnUserClickListener {
 
     EditText mgetmessage;
     ImageButton msendmessagebutton;
@@ -85,7 +85,7 @@ public class specificchat extends AppCompatActivity implements MessagesAdapter.O
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         mmessagerecyclerview.setLayoutManager(linearLayoutManager);
-        messagesAdapter=new MessagesAdapter(specificchat.this,messagesArrayList,this);
+        messagesAdapter=new MessagesAdapter(SpecificChat.this,messagesArrayList,this);
         mmessagerecyclerview.setAdapter(messagesAdapter);
 
 

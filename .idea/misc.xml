@@ -15,24 +15,7 @@
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/drawable/senderchatdrawable.xml" value="0.2703125" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_chat_box.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_login.xml" value="0.22962962962962963" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.2" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_specificchat.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/custom_report_user.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/demo2.xml" value="0.1" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/fragment_profile.xml" value="0.23333333333333334" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/recieverchatlayout.xml" value="0.25025641025641027" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/senderchatlayout.xml" value="0.25025641025641027" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/settings.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.23703703703703705" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/menu/navigation_drawer.xml" value="0.25025641025641027" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/menu/user_action.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/xml/preferences.xml" value="0.23703703703703705" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/alert_background.xml" value="0.2703125" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_bin.xml" value="0.2703125" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.2703125" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_logout.xml" value="0.2703125" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_loading.xml" value="0.25416666666666665" />
@@ -43,18 +26,12 @@
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_registration.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_set_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_specificchat.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_delete_msg.xml" value="0.264" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_emergency.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_report_user.xml" value="0.264" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/demo.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/demo1.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/demo2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/nav_header_navigation.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/menu/navigation_drawer.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/menu/user_action.xml" value="0.6" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable-v21/ic_menu_camera.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable-v21/ic_menu_gallery.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable-v21/ic_menu_slideshow.xml" value="0.14635416666666667" />
@@ -68,57 +45,69 @@
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/bot_bubbleout.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/bot_bubbleroll.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/bot_bubbletime.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/buttondrawable.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_addfriend.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_globe_grid_.xml" value="0.1796875" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_image_logo_background.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_image_venteranlogo.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_inbox.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_myprofile.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/ic_settings.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/messagebackground.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/messagesendbtn.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/pfp_user.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/recieverchatdrawable.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/senderchatdrawable.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable/side_nav_bar.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/font/montserrat.xml" value="0.28072916666666664" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_chat_box.xml" value="0.2" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_loading.xml" value="0.152" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_login.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_navigation.xml" value="0.4" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.1503623188405797" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.264" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_otp_authentication.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_registration.xml" value="0.3424657534246575" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_set_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_specificchat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/activity_update_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/app_bar_navigation.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.1503623188405797" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.152" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/chatviewlayout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/content_navigation.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/content_navigation_drawer.xml" value="0.15087719298245614" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/custom_report_user.xml" value="0.4" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/custom_emergency.xml" value="0.2" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/custom_report_user.xml" value="0.1" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/demo.xml" value="0.176" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/demo1.xml" value="0.536" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/demo2.xml" value="0.4" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_chat_inbox.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/demo2.xml" value="0.264" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_chat_inbox.xml" value="0.4" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_contact_us.xml" value="0.2" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_gallery.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_logout.xml" value="0.1" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/fragment_slideshow.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/nav_header_navigation.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.4" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/notification.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/recieverchatlayout.xml" value="0.45346062052505964" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/layout/senderchatlayout.xml" value="0.2844311377245509" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.4" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.2" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/menu/navigation.xml" value="0.536" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/menu/navigation_drawer.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/menu/user_action.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/menu/navigation_drawer.xml" value="0.536" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/menu/user_action.xml" value="0.6" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/mipmap-anydpi-v26/ic_default_user.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/mipmap-anydpi-v26/ic_default_user_round.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/mipmap-anydpi-v26/ic_image_logo.xml" value="0.2703125" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/mipmap-anydpi-v26/ic_image_logo_round.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/xml/preferences.xml" value="0.4" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_loading.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_login.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/vishn/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.264" />
@@ -158,7 +147,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.264" />
+        <option name="scale" value="0.2" />
       </ProjectState>
     </option>
   </component>
