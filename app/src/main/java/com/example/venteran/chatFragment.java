@@ -60,6 +60,9 @@ public class chatFragment extends Fragment {
                 if (uri!=null) {
                     Picasso.get().load(uri).into(noteViewHolder.mimageviewofuser);
                 }
+                else{
+                    noteViewHolder.mimageviewofuser.setImageResource(R.drawable.pfp_user);
+                }
                 if(firebasemodel.getStatus().equals("Online"))
                 {
                     noteViewHolder.statusofuser.setText(firebasemodel.getStatus());

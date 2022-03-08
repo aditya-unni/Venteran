@@ -39,7 +39,8 @@
         </activity>
         <activity
             android:name=".specificchat"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Venteran.NoActionBar"/>
         <activity
             android:name=".setProfile"
             android:exported="false" />

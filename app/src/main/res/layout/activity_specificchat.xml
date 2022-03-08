@@ -57,19 +57,17 @@
             </androidx.cardview.widget.CardView>
 
 
-
-
             <TextView
+                android:id="@+id/Nameofspecificuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name of User"
-                android:textSize="20sp"
-                android:layout_toRightOf="@id/cardviewofspeficuser"
-                android:id="@+id/Nameofspecificuser"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
-                android:textStyle="bold"
-                android:textColor="@color/white">
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/cardviewofspeficuser"
+                android:text="Name of User"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold">
 
             </TextView>
 

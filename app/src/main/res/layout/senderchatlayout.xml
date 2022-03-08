@@ -15,13 +15,13 @@
             android:id="@+id/sendermessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingRight="60dp"
             android:paddingBottom="15dp"
             android:text="Sender Message Display Here "
             android:textColor="@color/black"
-            android:gravity="left"
             android:textSize="18sp">
 
         </TextView>
