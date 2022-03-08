@@ -36,7 +36,6 @@ public class chatFragment extends Fragment {
     RecyclerView mrecyclerview;
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -77,7 +76,7 @@ public class chatFragment extends Fragment {
                 noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(getActivity(),specificchat.class);
+                        Intent intent=new Intent(getActivity(), SpecificChat.class);
                         intent.putExtra("username",firebasemodel.getUsername());
                         intent.putExtra("receiveruid",firebasemodel.getUid());
                         intent.putExtra("imageuri",firebasemodel.getImage());
