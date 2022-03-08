@@ -29,6 +29,7 @@
     <string name="enter_username">Enter Your Username</string>
     <string name="save">Save</string>
 
+    <string name="menu_Global_chat">Global Chat</string>
     <string name="menu_inbox">Inbox</string>
     <string name="menu_myprofile">My Profile</string>
     <string name="menu_addfriends">Add Friends</string>
@@ -69,3 +70,4 @@
 
     <string name="title_activity_navigation">Navigation</string>
 </resources>
+<!---themes-->

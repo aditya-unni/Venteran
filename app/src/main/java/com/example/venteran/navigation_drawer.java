@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -34,8 +35,6 @@ import android.os.Bundle;
 public class navigation_drawer extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-
-
     FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
     String toSendUsername;
@@ -46,6 +45,7 @@ public class navigation_drawer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
 
         firebaseAuth=FirebaseAuth.getInstance();
