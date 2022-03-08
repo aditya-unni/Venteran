@@ -123,7 +123,7 @@ public class setProfile extends AppCompatActivity {
 //                }
                 else {
                     mprogressbarofsetprofile.setVisibility(View.VISIBLE);
-                     sendDataForNewUser();
+                    sendDataForNewUser();
                     mprogressbarofsetprofile.setVisibility(View.INVISIBLE);
                     Intent intent=new Intent(setProfile.this,navigation_drawer.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);

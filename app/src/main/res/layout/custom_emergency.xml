@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:padding="20dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:padding="15dp"
+    android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/alert_background">
+
     <TextView
         android:id="@+id/emergency"
         android:layout_width="wrap_content"
@@ -13,52 +17,62 @@
         android:fontFamily="@font/alatsi"
         android:text="@string/emergency_head"
         android:textColor="@color/aquablue"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/emergency_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/emergency"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/alatsi"
-        android:paddingBottom="10dp"
         android:text="@string/emergency_msg"
         android:textColor="@color/halfgrey"
-        android:textSize="16sp" />
+        android:textSize="18sp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emergency" />
+
     <RadioButton
         android:id="@+id/radiobtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fontFamily="@font/alatsi"
         android:text="@string/radio_btn"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_below="@+id/emergency_txt"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emergency_txt" />
 
     <Button
         android:id="@+id/cancelbtn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/radiobtn"
-        android:layout_marginStart="45dp"
         android:backgroundTint="@color/contrastWhite"
         android:fontFamily="@font/alatsi"
         android:text="@string/cancel"
-        android:textColor="@color/red" />
+        android:textColor="@color/aquablue"
+        app:layout_constraintTop_toBottomOf="@id/radiobtn"
+        tools:layout_editor_absoluteX="91dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/proceedbtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/radiobtn"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="0dp"
-        android:layout_toRightOf="@id/cancelbtn3"
-        android:backgroundTint="@color/contrastWhite"
         android:elevation="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="@color/contrastWhite"
         android:fontFamily="@font/alatsi"
         android:text="@string/proceed"
-        android:textColor="@color/aquablue" />
-</RelativeLayout>
+        android:textColor="@color/aquablue"
+        app:layout_constraintStart_toEndOf="@+id/cancelbtn3"
+        app:layout_constraintTop_toBottomOf="@id/radiobtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

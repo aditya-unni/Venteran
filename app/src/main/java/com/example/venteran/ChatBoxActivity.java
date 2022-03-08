@@ -67,9 +67,10 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     private WebSocket webSocket;
     private String SERVER_PATH = "ws://venteran-backend.herokuapp.com";
     private EditText messageEdit;
-    private ImageButton sendBtn;
+    private ImageButton sendBtn,backbutton;
     private RecyclerView recyclerView;
     private GlobalChatAdapter messageAdapter;
+
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     String displayName = "";
@@ -86,6 +87,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_chat_box);
         Toast.makeText(ChatBoxActivity.this,
                 "Loaded ChatActivity",
@@ -93,11 +95,13 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
         username = "Slowqueso";
         intent = getIntent();
         recyclerView = findViewById(R.id.global_messagelist);
+        backbutton=findViewById(R.id.backbutton);
         messageAdapter = new GlobalChatAdapter(getLayoutInflater());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(messageAdapter);
         initiateSocketConnection();
         firebaseStorage = FirebaseStorage.getInstance();
+
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
@@ -121,6 +125,13 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 ImageURIacessToken=uri.toString();
 
 
+            }
+        });
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
@@ -231,6 +242,9 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 resetMessageEdit();
             }
         });
+
+
+
 
 
     }

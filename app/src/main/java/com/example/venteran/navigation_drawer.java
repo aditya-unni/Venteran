@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -34,8 +35,6 @@ import android.os.Bundle;
 public class navigation_drawer extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-
-
     FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
     String toSendUsername;
@@ -46,6 +45,7 @@ public class navigation_drawer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -73,7 +73,7 @@ public class navigation_drawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                 R.id.nav_inbox,R.id.nav_myprofile)
+                 R.id.nav_inbox,R.id.nav_myprofile,R.id.nav_settings)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
@@ -115,18 +115,18 @@ public class navigation_drawer extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//
-//        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-//        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//                //user is offline
-//            }
-//        });
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //user is offline
+            }
+        });
+    }
 
 
 
