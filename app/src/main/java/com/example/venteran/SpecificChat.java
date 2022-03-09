@@ -107,7 +107,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         mmessagerecyclerview.setLayoutManager(linearLayoutManager);
-        messagesAdapter=new MessagesAdapter(SpecificChat.this,messagesArrayList);
+        messagesAdapter=new MessagesAdapter(SpecificChat.this,messagesArrayList, this);
         mmessagerecyclerview.setAdapter(messagesAdapter);
 
 
