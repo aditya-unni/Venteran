@@ -35,10 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginLeft="6dp"
+            android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/text_reciever"
+            android:paddingTop="5dp"
             android:text="COUNSELLOR"
-            android:textSize="13sp" />
+            android:textSize="10sp" />
     </RelativeLayout>
 
 <RelativeLayout
@@ -77,14 +78,6 @@
             android:text="20:09"
             android:textColor="#434343"
             android:textSize="10sp" />
-
-
-
-
-
-
-
-
     </RelativeLayout>
 
 
