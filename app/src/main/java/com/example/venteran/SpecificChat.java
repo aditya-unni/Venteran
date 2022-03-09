@@ -2,6 +2,9 @@ package com.example.venteran;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -43,7 +46,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SpecificChat extends AppCompatActivity {
+public class SpecificChat extends AppCompatActivity implements MessagesAdapter.OnUserClickListener{
 
     EditText mgetmessage;
     ImageButton msendmessagebutton;
@@ -79,6 +82,9 @@ public class SpecificChat extends AppCompatActivity {
     APIService apiService;
 
     boolean notify = false;
+    private ActionMode actionMode;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +156,7 @@ public class SpecificChat extends AppCompatActivity {
                     messagesArrayList.add(messages);
                 }
                 messagesAdapter.notifyDataSetChanged();
+
             }
 
 
@@ -188,7 +195,7 @@ public class SpecificChat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 notify = true;
-                enteredmessage=mgetmessage.getText().toString();
+                enteredmessage=mgetmessage.getText().toString().trim();
                 if(enteredmessage.isEmpty())
                 {
                     Toast.makeText(getApplicationContext(),"Enter message first",Toast.LENGTH_SHORT).show();
@@ -216,11 +223,12 @@ public class SpecificChat extends AppCompatActivity {
                                     .setValue(messages).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-
+                                    mmessagerecyclerview.smoothScrollToPosition(messagesAdapter.getItemCount() - 1);
                                 }
                             });
                         }
                     });
+
                     mgetmessage.setText(null);
 
                     final String msg = enteredmessage;
@@ -291,6 +299,47 @@ public class SpecificChat extends AppCompatActivity {
 
 
 
+
+    ActionMode.Callback actionModeCallBack = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            getMenuInflater().inflate(R.menu.user_action,menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.bin:
+                    Toast.makeText(getApplicationContext(), "Message deleted", Toast.LENGTH_SHORT).show();
+                    mode.finish(); // Action picked, so close the CAB
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            for(int i=0;i<messagesArrayList.size();i++){
+                messagesArrayList.get(i).setSelected(false);
+            }
+            messagesAdapter.notifyDataSetChanged();
+            actionMode=null;
+        }
+    };
+
+
+
+
+
+
+
     private void updateToken(String token) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
         Token tokenl = new Token(token);
@@ -313,5 +362,24 @@ public class SpecificChat extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onUserLongClick(int position) {
+        if (actionMode==null){
+            actionMode=startActionMode(actionModeCallBack);
+        }
+        Messages selectedmessage =messagesArrayList.get(position);
+        messagesArrayList.get(position).setSelected(!selectedmessage.isSelected());
+        messagesAdapter.notifyDataSetChanged();
 
+        int totalnumberofmessageselected=0;
+        for (Messages messages:messagesArrayList){
+            if (messages.isSelected()){
+                totalnumberofmessageselected++;
+            }
+        }
+        actionMode.setTitle(String.valueOf(totalnumberofmessageselected));
+        if (totalnumberofmessageselected==0){
+            actionMode.finish();
+        }
+    }
 }

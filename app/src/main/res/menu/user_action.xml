@@ -5,7 +5,8 @@
         android:title="Bin"
         android:icon="@drawable/ic_bin"
         android:orderInCategory="100"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/black"/>
     <item android:id="@+id/reply_pvt"
         android:title="@string/menu_replypvt"
         android:orderInCategory="100" />

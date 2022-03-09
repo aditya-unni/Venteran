@@ -5,7 +5,15 @@ public class Messages {
     String senderId;
     long timestamp;
     String currenttime;
+    boolean isSelected;
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public Messages() {
     }
