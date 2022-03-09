@@ -15,20 +15,33 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.venteran.Notification.Client;
+import com.example.venteran.Notification.Data;
+import com.example.venteran.Notification.MyResponse;
+import com.example.venteran.Notification.Sender;
+import com.example.venteran.Notification.Token;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SpecificChat extends AppCompatActivity {
 
@@ -47,6 +60,11 @@ public class SpecificChat extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     String senderroom,recieverroom;
 
+    FirebaseUser fuser;
+    String userid;
+
+    DatabaseReference reference;
+
     ImageButton mbackbuttonofspecificchat;
 
     RecyclerView mmessagerecyclerview;
@@ -58,7 +76,9 @@ public class SpecificChat extends AppCompatActivity {
     MessagesAdapter messagesAdapter;
     ArrayList<Messages> messagesArrayList;
 
+    APIService apiService;
 
+    boolean notify = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +92,8 @@ public class SpecificChat extends AppCompatActivity {
         mnameofspecificuser=findViewById(R.id.Nameofspecificuser);
         mimageviewofspecificuser=findViewById(R.id.specificuserimageinimageview);
         mbackbuttonofspecificchat=findViewById(R.id.backbuttonofspecificchat);
+
+        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
         messagesArrayList=new ArrayList<>();
         mmessagerecyclerview=findViewById(R.id.recyclerviewofspecific);
@@ -106,7 +128,8 @@ public class SpecificChat extends AppCompatActivity {
         msenderuid=firebaseAuth.getUid();
         mrecieveruid=getIntent().getStringExtra("receiveruid");
         mrecievername=getIntent().getStringExtra("username");
-
+        userid = intent.getStringExtra("receiveruserid");
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
 
 
         senderroom=msenderuid+mrecieveruid;
@@ -130,7 +153,6 @@ public class SpecificChat extends AppCompatActivity {
             }
 
 
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -138,6 +160,8 @@ public class SpecificChat extends AppCompatActivity {
         });
 
 
+
+        updateToken(FirebaseInstanceId.getInstance().getToken());
 
 
         mbackbuttonofspecificchat.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +187,7 @@ public class SpecificChat extends AppCompatActivity {
         msendmessagebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                notify = true;
                 enteredmessage=mgetmessage.getText().toString();
                 if(enteredmessage.isEmpty())
                 {
@@ -197,25 +221,81 @@ public class SpecificChat extends AppCompatActivity {
                             });
                         }
                     });
-
                     mgetmessage.setText(null);
 
+                    final String msg = enteredmessage;
 
+                    reference = firebaseDatabase.getReference("Users").child(mrecieveruid);
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            User user = dataSnapshot.getValue(User.class);
+                            if(notify) {
+                                sendNotification(mrecieveruid, mrecievername, msg);
+                            }
+                            notify = false;
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
 
                 }
-
-
-
 
             }
         });
 
-
-
-
     }
 
+    private void sendNotification(String receiver, String username, String message) {
+        DatabaseReference tokens = FirebaseDatabase.getInstance().getReference("Tokens");
+        Query query = tokens.orderByKey().equalTo(receiver);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Token token = snapshot.getValue(Token.class);
+                    Data data = new Data(fuser.getUid(), R.mipmap.ic_launcher, username+": "+message,
+                            "New Message", userid);
+
+                    Sender sender = new Sender(data, token.getToken());
+
+                    apiService.sendNotification(sender)
+                            .enqueue(new Callback<MyResponse>() {
+                                @Override
+                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                    if(response.code() == 200) {
+                                        if(response.body().success != 1) {
+                                            Toast.makeText(SpecificChat.this, "Failed!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<MyResponse> call, Throwable t) {
+
+                                }
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+
+
+    private void updateToken(String token) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token tokenl = new Token(token);
+        reference.child(fuser.getUid()).setValue(tokenl);
+    }
 
     @Override
     public void onStart() {
