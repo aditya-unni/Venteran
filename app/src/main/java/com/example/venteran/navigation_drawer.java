@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,8 +41,11 @@ public class navigation_drawer extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
     FirebaseUser firebaseUser;
     String toSendUsername;
+    ImageView navheaderimage;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -54,6 +62,13 @@ public class navigation_drawer extends AppCompatActivity {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
+
+
+        //nav header
+        firebaseStorage= FirebaseStorage.getInstance("gs://venteran-56fbc.appspot.com/");
+
+
+
 
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -89,6 +104,19 @@ public class navigation_drawer extends AppCompatActivity {
             }
         });
 
+        MenuItem globalMenuItem = navigationView.getMenu().findItem(R.id.nav_Global_Chat);
+        globalMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent chatBox = new Intent(navigation_drawer.this, ChatBoxActivity.class);
+                String USERNAME = "username";
+                chatBox.putExtra(USERNAME, "Slowqueso");
+                startActivity(chatBox);
+                return true;
+            }
+        });
+
+
         MenuItem emergencyMenuItem = navigationView.getMenu().findItem(R.id.nav_emergency);
         emergencyMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -98,6 +126,8 @@ public class navigation_drawer extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
 
     @Override

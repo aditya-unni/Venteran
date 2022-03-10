@@ -40,6 +40,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
     public interface OnUserClickListener{
         void onUserLongClick(int position);
+//        void onDelete(int position);
     }
 
 
@@ -84,6 +85,9 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                 viewHolder.senderlayout.setBackgroundResource(R.drawable.senderchatdrawable);
             }
 
+            if (messages.isDeleted()){
+                messagesArrayList.remove(position);
+            }
 
             viewHolder.senderlayout.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
