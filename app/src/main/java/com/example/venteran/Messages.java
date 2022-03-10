@@ -6,6 +6,7 @@ public class Messages {
     long timestamp;
     String currenttime;
     boolean isSelected;
+    boolean isDeleted;
 
     public boolean isSelected() {
         return isSelected;
@@ -18,6 +19,13 @@ public class Messages {
     public Messages() {
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 
     public Messages(String message, String senderId, long timestamp, String currenttime) {
         this.message = message;

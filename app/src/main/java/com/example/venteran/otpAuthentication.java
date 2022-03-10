@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -18,6 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class otpAuthentication extends AppCompatActivity {
 
@@ -42,6 +48,9 @@ public class otpAuthentication extends AppCompatActivity {
         mprogressbarofotpauth=findViewById(R.id.progreesbarforauth);
 
         firebaseAuth=FirebaseAuth.getInstance();
+
+
+
 
         mchangenumber.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,10 +84,35 @@ public class otpAuthentication extends AppCompatActivity {
                 if (task.isSuccessful()){
                     mprogressbarofotpauth.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(otpAuthentication.this,setProfile.class);
-                    intent.putExtra("phone", getIntent().getStringExtra("phone"));
-                    startActivity(intent);
-                    finish();
+
+                    //skip if user has already an account
+                    DatabaseReference rootRef = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                    DatabaseReference userNameRef = rootRef.child(firebaseAuth.getUid());
+                    ValueEventListener eventListener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()) {
+                                Intent intent = new Intent(otpAuthentication.this,navigation_drawer.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+
+                            }
+                            else {
+                                Intent intent=new Intent(otpAuthentication.this,setProfile.class);
+                                intent.putExtra("phone", getIntent().getStringExtra("phone"));
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.d("DATABASE ERROR", databaseError.getMessage()); //Don't ignore errors!
+                        }
+                    };
+                    userNameRef.addValueEventListener(eventListener);
+
+
                 }
                 else{
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){
