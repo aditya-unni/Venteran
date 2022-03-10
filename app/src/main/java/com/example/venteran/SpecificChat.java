@@ -110,9 +110,6 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         messagesAdapter=new MessagesAdapter(SpecificChat.this,messagesArrayList, this);
         mmessagerecyclerview.setAdapter(messagesAdapter);
 
-
-
-
         intent=getIntent();
 
         setSupportActionBar(mtoolbarofspecificchat);
@@ -132,14 +129,30 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
 
 
         msenderuid=firebaseAuth.getUid();
+
         mrecieveruid=getIntent().getStringExtra("receiveruid");
         mrecievername=getIntent().getStringExtra("username");
-        userid = intent.getStringExtra("receiveruserid");
+//        userid = intent.getStringExtra("receiveruserid");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
 
         senderroom=msenderuid+mrecieveruid;
         recieverroom=mrecieveruid+msenderuid;
+
+
+        DatabaseReference tempReference = firebaseDatabase.getReference().child(msenderuid);
+
+        tempReference.child("username").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sendername = (String) snapshot.getValue();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
@@ -165,8 +178,6 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
 
             }
         });
-
-
 
         updateToken(FirebaseInstanceId.getInstance().getToken());
 
@@ -199,13 +210,13 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                 if(enteredmessage.isEmpty())
                 {
                     Toast.makeText(getApplicationContext(),"Enter message first",Toast.LENGTH_SHORT).show();
+                    notify = false;
                 }
-
                 else
-
                 {
-                    Date date=new Date();
+                    Date date = new Date();
                     currenttime=simpleDateFormat.format(calendar.getTime());
+                    final String msg = enteredmessage;
                     Messages messages=new Messages(enteredmessage,firebaseAuth.getUid(),date.getTime(),currenttime);
                     firebaseDatabase=FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/");
                     firebaseDatabase.getReference().child("chats")
@@ -229,17 +240,13 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                         }
                     });
 
-                    mgetmessage.setText(null);
-
-                    final String msg = enteredmessage;
-
-                    reference = firebaseDatabase.getReference("Users").child(mrecieveruid);
+                    reference = firebaseDatabase.getReference("Users").child(fuser.getUid());
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             User user = dataSnapshot.getValue(User.class);
                             if(notify) {
-                                sendNotification(mrecieveruid, mrecievername, msg);
+                                sendNotification(mrecieveruid, sendername, msg);
                             }
                             notify = false;
                         }
@@ -250,6 +257,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                         }
                     });
 
+                    mgetmessage.setText(null);
                 }
 
             }
@@ -258,15 +266,15 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
     }
 
     private void sendNotification(String receiver, String username, String message) {
-        DatabaseReference tokens = FirebaseDatabase.getInstance().getReference("Tokens");
+        DatabaseReference tokens = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Tokens");
         Query query = tokens.orderByKey().equalTo(receiver);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Token token = snapshot.getValue(Token.class);
-                    Data data = new Data(fuser.getUid(), R.mipmap.ic_launcher, username+": "+message,
-                            "New Message", userid);
+                    Data data = new Data(fuser.getUid(), R.drawable.ic_image_venteranlogo, username+": "+message,
+                            "New Message", mrecieveruid);
 
                     Sender sender = new Sender(data, token.getToken());
 
@@ -316,45 +324,8 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.bin:
-                    for (Messages deletemessage:messagesArrayList){
-                        if (deletemessage.isSelected()){
-                            firebaseDatabase=FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                            DatabaseReference deletesendref = firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
-                            Query sendquery = deletesendref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
-                            sendquery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for(DataSnapshot ds:snapshot.getChildren()){
-                                        ds.getRef().removeValue();
-                                    }
-                                    deletemessage.setDeleted(true);
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                            DatabaseReference deleterecref = firebaseDatabase.getReference().child("chats").child(recieverroom).child("messages");
-                            Query recquery = deleterecref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
-                            recquery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for(DataSnapshot ds:snapshot.getChildren()){
-                                        ds.getRef().removeValue();
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                            messagesAdapter.notifyDataSetChanged();
-                        }
-                    }
                     Toast.makeText(getApplicationContext(), "Message deleted", Toast.LENGTH_SHORT).show();
-                    mode.finish();
+                    mode.finish(); // Action picked, so close the CAB
                     return true;
                 default:
                     return false;
@@ -373,12 +344,8 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
 
 
 
-
-
-
-
     private void updateToken(String token) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Tokens");
         Token tokenl = new Token(token);
         reference.child(fuser.getUid()).setValue(tokenl);
     }
@@ -419,26 +386,4 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
             actionMode.finish();
         }
     }
-//
-//    @Override
-//    public void onDelete(int position) {
-//        Messages deletedmessage =messagesArrayList.get(position);
-//        long timestamp=deletedmessage.getTimestamp();
-//        messagesArrayList.remove(position);
-//        DatabaseReference deleteref = firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
-//        Query query = deleteref.orderByChild("timestamp").equalTo(timestamp);
-//        query.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                snapshot.getRef().removeValue();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//        messagesAdapter.notifyDataSetChanged();
-//
-//    }
 }
