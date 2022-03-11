@@ -110,6 +110,36 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             RecieverViewHolder viewHolder=(RecieverViewHolder)holder;
             viewHolder.textViewmessaage.setText(messages.getMessage());
             viewHolder.timeofmessage.setText(messages.getCurrenttime());
+
+
+
+
+
+            if (messages.isSelected()){
+                viewHolder.receiverlayout.setBackgroundResource(R.drawable.onholdsender);
+            }
+            else {
+                viewHolder.receiverlayout.setBackgroundResource(R.drawable.recieverchatdrawable);
+            }
+
+            if (messages.isDeleted()){
+                messagesArrayList.remove(position);
+            }
+
+            viewHolder.receiverlayout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+//                    if (actionMode != null) {
+//                        return false;
+//                    }
+//
+//                    // Start the CAB using the ActionMode.Callback defined above
+//                    actionMode = toolbar.startActionMode(actionModeCallback);
+//                    toolbar.setSelected(true);
+                    listener.onUserLongClick(viewHolder.getAdapterPosition());
+                    return true;
+                }
+            });
         }
 
 
@@ -169,12 +199,14 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
         TextView textViewmessaage;
         TextView timeofmessage;
+        RelativeLayout receiverlayout;
 
 
         public RecieverViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewmessaage=itemView.findViewById(R.id.sendermessage);
             timeofmessage=itemView.findViewById(R.id.timeofmessage);
+            receiverlayout=itemView.findViewById(R.id.layoutformessage);
         }
     }
 //

@@ -208,7 +208,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
 
         mnameofspecificuser.setText(mrecievername);
         String uri=intent.getStringExtra("imageuri");
-        if(uri==null)
+        if(uri.isEmpty())
         {
             Toast.makeText(getApplicationContext(),"null is recieved",Toast.LENGTH_SHORT).show();
         }
@@ -358,26 +358,28 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                                     deletemessage.setDeleted(true);
                                 }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
 
                                 }
                             });
-                            DatabaseReference deleterecref = firebaseDatabase.getReference().child("chats").child(recieverroom).child("messages");
-                            Query recquery = deleterecref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
-                            recquery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for(DataSnapshot ds:snapshot.getChildren()){
-                                        ds.getRef().removeValue();
+                            if(deletemessage.getSenderId().equals(firebaseAuth.getUid())) {
+                                DatabaseReference deleterecref = firebaseDatabase.getReference().child("chats").child(recieverroom).child("messages");
+                                Query recquery = deleterecref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
+                                recquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot ds : snapshot.getChildren()) {
+                                            ds.getRef().removeValue();
+                                        }
                                     }
-                                }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
 
-                                }
-                            });
+                                    }
+                                });
+                            }
                             messagesAdapter.notifyDataSetChanged();
                         }
                     }

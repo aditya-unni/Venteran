@@ -32,7 +32,7 @@
     <string name="menu_Global_chat">Global Chat</string>
     <string name="menu_inbox">Inbox</string>
     <string name="menu_myprofile">My Profile</string>
-    <string name="menu_addfriends">Add Friends</string>
+    <string name="menu_aboutus">About Us</string>
     <string name="menu_groups">Groups</string>
     <string name="menu_contactus">Contact Us</string>
     <string name="menu_emergency">Emergency</string>
@@ -69,6 +69,14 @@
     <string name="contactus_dd3">I found a bug in the app</string>
     <string name="contactus_dd4">I need help with a app feature</string>
     <string name="contactus_dd5">I have a privacy question</string>
+
+    <string-array name="contactus_array">
+        <item>@string/contactus_dd1</item>
+        <item>@string/contactus_dd2</item>
+        <item>@string/contactus_dd3</item>
+        <item>@string/contactus_dd4</item>
+        <item>@string/contactus_dd5</item>
+    </string-array>
 
     <string name="role">Software Developer</string>
     <string name="kartik">Kartik</string>

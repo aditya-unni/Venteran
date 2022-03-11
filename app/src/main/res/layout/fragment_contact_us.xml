@@ -21,56 +21,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/layout_global_chat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        android:background="@color/aquablue"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/layout_global_chat"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        android:orientation="vertical"-->
+<!--        android:background="@color/aquablue"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:padding="10dp"
-            android:background="@color/aquablue"
-            android:id="@+id/toolbarofspecificchat">
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:background="@color/aquablue"-->
+<!--            android:id="@+id/toolbarofspecificchat">-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center_vertical">-->
 
-                <ImageButton
-                    android:id="@+id/backbutton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_baseline_arrow_back_24"
-                    app:tint="@color/white">
+<!--                <ImageButton-->
+<!--                    android:id="@+id/backbutton"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:src="@drawable/ic_baseline_arrow_back_24"-->
+<!--                    app:tint="@color/white">-->
 
-                </ImageButton>
+<!--                </ImageButton>-->
 
-                <TextView
-                    android:id="@+id/Nameofspecificuser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="86dp"
-                    android:layout_toRightOf="@id/backbutton"
-                    android:text="Contact Us"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold">
+<!--                <TextView-->
+<!--                    android:id="@+id/Nameofspecificuser"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:layout_marginLeft="86dp"-->
+<!--                    android:layout_toRightOf="@id/backbutton"-->
+<!--                    android:text="Contact Us"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold">-->
 
-                </TextView>
+<!--                </TextView>-->
 
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+<!--            </RelativeLayout>-->
+<!--        </androidx.appcompat.widget.Toolbar>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -83,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         android:hint="Enter your email"
-        app:layout_constraintTop_toBottomOf="@+id/layout_global_chat" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -93,11 +93,11 @@
         android:layout_marginTop="69dp"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_global_chat"
+        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_mail" />
 
     <Spinner
-        android:id="@+id/planets_spinner"
+        android:id="@+id/contact_spinner"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -108,7 +108,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        android:spinnerMode="dropdown"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -123,7 +124,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/contact_spinner" />
 
     <EditText
         android:id="@+id/editText"

@@ -20,10 +20,21 @@
         tools:layout="@layout/fragment_profile"/>
 
     <fragment
+        android:id="@+id/nav_contactus"
+        android:name="com.example.venteran.contactus_fragment"
+        android:label="@string/menu_contactus"
+        tools:layout="@layout/fragment_about_us"/>
+
+    <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.venteran.My_Pref_frag"
         android:label="@string/menu_settings"
         tools:layout="@layout/settings"/>
+    <fragment
+        android:id="@+id/nav_aboutus"
+        android:label="@string/menu_aboutus"
+        android:name="com.example.venteran.aboutus_fragment"
+        tools:layout="@layout/fragment_about_us"/>
 
 
 </navigation>
