@@ -79,7 +79,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
 
             if (messages.isSelected()){
-                viewHolder.senderlayout.setBackgroundColor(Color.GREEN);
+                viewHolder.senderlayout.setBackgroundResource(R.drawable.onholdsender);
             }
             else {
                 viewHolder.senderlayout.setBackgroundResource(R.drawable.senderchatdrawable);
