@@ -131,12 +131,13 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         JSONObject user_data = new JSONObject(document.getData());
                         try {
-                            String test_username = user_data.getString("username");
-                            Log.d("username", username);
-                            if(username.equals(test_username)){
+                            String test_uid = user_data.getString("uid");
+                            if(test_uid.equals(firebaseAuth.getUid())){
+                                Log.d("username", test_uid);
                                 user_role = user_data.getString("role");
                                 Log.d("role", user_role);
                                 ImageURIacessToken = user_data.getString("image");
+                                Log.d("fetched_image",ImageURIacessToken);
                                 break;
                             }
                         } catch (JSONException e) {
