@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class GlobalChatAdapter extends RecyclerView.Adapter{
     private static final int TYPE_MESSAGE_SENT = 0;
@@ -94,6 +95,8 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
 
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         JSONObject message = messages.get(position);
@@ -109,13 +112,20 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
                     messageHolder.nameTxt.setText(message.getString("username"));
                     messageHolder.receiverTxt.setText(message.getString("message"));
                     messageHolder.receiverTime.setText(message.getString("timeStamp"));
-//                    messageHolder.receiverRole.setText(message.getString("role"));
-                    Log.d("imageUrl", message.getString("imageUrl"));
+                    messageHolder.receiverRole.setText(message.getString("role").toUpperCase());
+//                    Log.d("imageUrl", message.getString("imageUrl"));
                     if(message.getString("imageUrl")!=null || message.getString("imageUrl").equals("")){
                         Picasso.get().load(message.getString("imageUrl")).into(receiverImage);
                     }else{
                         receiverImage.setImageResource(R.drawable.pfp_user);
                     }
+                    messageHolder.receiverTxt.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
+
+                            return false;
+                        }
+                    });
                 }
             }catch (JSONException e) {
             e.printStackTrace();

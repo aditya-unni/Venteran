@@ -221,8 +221,9 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                     try{
                         JSONObject textData = new JSONObject(text);
                         JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("uid", textData.getString("uid"));
                         jsonObject.put("imageUrl", textData.getString("imageUrl"));
-//                        jsonObject.put("role", textData.getString("role"));
+                        jsonObject.put("role", textData.getString("role"));
                         jsonObject.put("username",textData.getString("username"));
                         jsonObject.put("message", textData.getString("message"));
                         jsonObject.put("timeStamp", textData.getString("timeStamp"));
@@ -256,7 +257,8 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 DateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     jsonObject.put("username", username);
-//                    jsonObject.put("role", "General");
+                    jsonObject.put("uid", firebaseAuth.getUid());
+                    jsonObject.put("role", user_role);
                     jsonObject.put("message", messageEdit.getText().toString());
                     Log.d("imageurl", ImageURIacessToken);
                     jsonObject.put("timeStamp", format.format(date));
