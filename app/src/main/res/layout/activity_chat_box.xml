@@ -96,7 +96,6 @@
         android:background="@drawable/messagebackground"
         android:layout_marginBottom="5dp">
 
-
         <EditText
             android:id="@+id/edit_text_global"
             android:layout_width="match_parent"
@@ -108,8 +107,6 @@
             android:inputType="text"
             android:maxLines="6"
             tools:ignore="Autofill" />
-
-
 
     </RelativeLayout>
 
@@ -130,6 +127,5 @@
         app:layout_constraintLeft_toRightOf="@+id/layout_gchat_chatbox"
         app:layout_constraintTop_toBottomOf="@+id/global_messagelist"
         tools:ignore="MissingConstraints" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
