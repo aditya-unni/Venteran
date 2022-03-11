@@ -161,20 +161,18 @@ public class navigation_drawer extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                //user is offline
-            }
-        });
-    }
-
-
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//
+//        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+//        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                //user is offline
+//            }
+//        });
+//    }
 
 
 //    @Override

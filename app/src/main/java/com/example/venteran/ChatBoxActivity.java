@@ -22,9 +22,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -62,7 +64,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
     private List<JSONObject> messagesArrayList;
     private int selectedposition;
 
-
+    int points;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -282,7 +284,6 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
                     }catch (JSONException e){
                         e.printStackTrace();
                     }
-                    Toast.makeText(getContext(), "On message", Toast.LENGTH_SHORT).show();
                 });
 
         }
@@ -326,7 +327,6 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
                 resetMessageEdit();
             }
         });
-        Toast.makeText(getContext(), "This is initialize", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -363,6 +363,39 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
                     return true;
 
                 case R.id.report:
+                    firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    JSONObject user_data = new JSONObject(document.getData());
+                                    try {
+                                        String userId = messagesArrayList.get(selectedposition).getString("uid");
+                                        String test_uid = user_data.getString("uid");
+                                        if(test_uid.equals(userId)){
+                                            points = user_data.getInt("points");
+                                            points -= 1;
+                                            document.getReference().update("points",points).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Toast.makeText(getContext(), "User Reported!",Toast.LENGTH_SHORT);
+                                                }
+                                            });
+                                            break;
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                            } else {
+                                Log.d("Document_Error", "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+
+
+
                     Toast.makeText(getContext(), "Reported", Toast.LENGTH_SHORT).show();
                     return true;
 

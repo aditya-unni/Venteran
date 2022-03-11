@@ -119,8 +119,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         mtoolbarofspecificchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Toolbar is Clicked",Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(getApplicationContext(),"Toolbar is Clicked",Toast.LENGTH_SHORT).show();
 
             }
         });
