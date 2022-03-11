@@ -29,6 +29,7 @@
     <string name="enter_username">Enter Your Username</string>
     <string name="save">Save</string>
 
+    <string name="menu_Global_chat">Global Chat</string>
     <string name="menu_inbox">Inbox</string>
     <string name="menu_myprofile">My Profile</string>
     <string name="menu_addfriends">Add Friends</string>
@@ -37,7 +38,7 @@
     <string name="menu_emergency">Emergency</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_logout">Logout</string>
-    
+
     <string name="menu_replypvt">Reply Privately</string>
     <string name="menu_report_user">Report User</string>
 
@@ -45,6 +46,7 @@
     <string name="report">Report</string>
     <string name="delete">Delete</string>
     <string name="proceed">Proceed</string>
+    <string name="send">SEND</string>
     <string name="report_head">Report Sachin</string>
     <string name="delete_head">Delete Message ?</string>
     <string name="report_msg">This Message will be forwarded to Venteran. This contact will not be notified</string>
@@ -52,6 +54,37 @@
     <string name="emergency_head">Are you Sure ?</string>
     <string name="emergency_msg">The following button should only be used in the case of emergencies or self harm,any misuse of this option is bannable and is not advised.</string>
     <string name="radio_btn">I agree</string>
+
+    <string name="contactus">Contact Us</string>
+    <string name="contactus_q1">What can we Help you with ?</string>
+    <string name="contactus_q2">What information should we know ?</string>
+    <string name="contactus_email">You can mail us on</string>
+    <string name="contactus_gmail">Venteranofficials@gmail.com</string>
+    <string name="contactus_txtbox">please provide as much detail as possible, such as why you think may be your account wont be accessible or details of the bug you’re experiencing</string>
+    <string name="contactus_dd">select an option</string>
+    <string name="contactus_dd1">I cant access my account</string>
+    <string name="contactus_dd2">Report safety concern</string>
+    <string name="contactus_dd3">I found a bug in the app</string>
+    <string name="contactus_dd4">I need help with a app feature</string>
+    <string name="contactus_dd5">I have a privacy question</string>
+
+    <string name="role">Software Developer</string>
+    <string name="kartik">Kartik</string>
+    <string name="kartik_email">abc@gmail.com</string>
+    <string name="aditya">Aditya</string>
+    <string name="aditya_email">abc@gmail.com</string>
+    <string name="sachin">Sachin</string>
+    <string name="sachin_email">abc@gmail.com</string>
+    <string name="kevin">Kevin</string>
+    <string name="kevin_email">abc@gmail.com</string>
+    <string name="vishnu">Vishnu</string>
+    <string name="vishnu_email">abc@gmail.com</string>
+    <string name="divya">Divya</string>
+    <string name="divya_email">abc@gmail.com</string>
+    <string name="shakir">Shakir</string>
+    <string name="shakir_email">abc@gmail.com</string>
+    <string name="saurav">Saurav</string>
+    <string name="saurav_email">abc@gmail.com</string>
 
     <string name="title_activity_navigation">Navigation</string>
 </resources>

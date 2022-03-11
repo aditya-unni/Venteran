@@ -4,13 +4,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -27,6 +30,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,11 +40,12 @@ import android.os.Bundle;
 public class navigation_drawer extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-
-
     FirebaseFirestore firebaseFirestore;
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
     FirebaseUser firebaseUser;
     String toSendUsername;
+    ImageView navheaderimage;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -46,7 +53,22 @@ public class navigation_drawer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
+
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
+        //nav header
+        firebaseStorage= FirebaseStorage.getInstance("gs://venteran-56fbc.appspot.com/");
+
+
+
 
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -66,7 +88,7 @@ public class navigation_drawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                 R.id.nav_inbox)
+                 R.id.nav_inbox,R.id.nav_myprofile,R.id.nav_settings)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
@@ -81,6 +103,31 @@ public class navigation_drawer extends AppCompatActivity {
                 return true;
             }
         });
+
+        MenuItem globalMenuItem = navigationView.getMenu().findItem(R.id.nav_Global_Chat);
+        globalMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent chatBox = new Intent(navigation_drawer.this, ChatBoxActivity.class);
+                String USERNAME = "username";
+                chatBox.putExtra(USERNAME, "Slowqueso");
+                startActivity(chatBox);
+                return true;
+            }
+        });
+
+
+        MenuItem emergencyMenuItem = navigationView.getMenu().findItem(R.id.nav_emergency);
+        emergencyMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                CustomEmergencyDialog ced = new CustomEmergencyDialog(navigation_drawer.this);
+                ced.show();
+                return true;
+            }
+        });
+
+
     }
 
     @Override
@@ -163,6 +210,20 @@ public class navigation_drawer extends AppCompatActivity {
         });
     }
 
+
+
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+//        documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                //user is offline
+//            }
+//        });
+//    }
+
     public void alert(String message) {
         new AlertDialog.Builder(navigation_drawer.this)
                 .setTitle("Logout")
@@ -183,7 +244,8 @@ public class navigation_drawer extends AppCompatActivity {
                     }
                 })
                 .show();
-
     }
+
+
 
 }

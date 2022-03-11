@@ -1,12 +1,21 @@
 package com.example.venteran;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,14 +25,30 @@ import java.util.ArrayList;
 public class MessagesAdapter extends RecyclerView.Adapter {
 
     Context context;
+    OnUserClickListener listener;
+
     ArrayList<Messages> messagesArrayList;
 
     int ITEM_SEND=1;
     int ITEM_RECIEVE=2;
 
-    public MessagesAdapter(Context context, ArrayList<Messages> messagesArrayList) {
+
+    ActionMode actionMode=null;
+    View customview;
+    Toolbar toolbar;
+
+
+    public interface OnUserClickListener{
+        void onUserLongClick(int position);
+//        void onDelete(int position);
+    }
+
+
+    public MessagesAdapter(Context context, ArrayList<Messages> messagesArrayList,OnUserClickListener listener) {
         this.context = context;
+        toolbar=((Activity)context).findViewById(R.id.toolbarofspecificchat);
         this.messagesArrayList = messagesArrayList;
+        this.listener=listener;
     }
 
     @NonNull
@@ -39,6 +64,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             View view= LayoutInflater.from(context).inflate(R.layout.recieverchatlayout,parent,false);
             return new RecieverViewHolder(view);
         }
+
     }
 
     @Override
@@ -50,6 +76,34 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             SenderViewHolder viewHolder=(SenderViewHolder)holder;
             viewHolder.textViewmessaage.setText(messages.getMessage());
             viewHolder.timeofmessage.setText(messages.getCurrenttime());
+
+
+            if (messages.isSelected()){
+                viewHolder.senderlayout.setBackgroundColor(Color.GREEN);
+            }
+            else {
+                viewHolder.senderlayout.setBackgroundResource(R.drawable.senderchatdrawable);
+            }
+
+            if (messages.isDeleted()){
+                messagesArrayList.remove(position);
+            }
+
+            viewHolder.senderlayout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+//                    if (actionMode != null) {
+//                        return false;
+//                    }
+//
+//                    // Start the CAB using the ActionMode.Callback defined above
+//                    actionMode = toolbar.startActionMode(actionModeCallback);
+//                    toolbar.setSelected(true);
+                    listener.onUserLongClick(viewHolder.getAdapterPosition());
+                    return true;
+                }
+            });
+
         }
         else
         {
@@ -59,6 +113,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         }
 
 
+//        delete message function
 
 
 
@@ -96,12 +151,16 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
         TextView textViewmessaage;
         TextView timeofmessage;
+        RelativeLayout senderlayout;
 
 
         public SenderViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewmessaage=itemView.findViewById(R.id.sendermessage);
             timeofmessage=itemView.findViewById(R.id.timeofmessage);
+            senderlayout=itemView.findViewById(R.id.layoutformessage);
+
+
         }
     }
 
@@ -118,5 +177,43 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             timeofmessage=itemView.findViewById(R.id.timeofmessage);
         }
     }
-
+//
+//    private ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
+//
+//        // Called when the action mode is created; startActionMode() was called
+//        @Override
+//        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+//            // Inflate a menu resource providing context menu items
+//            MenuInflater inflater = mode.getMenuInflater();
+//            inflater.inflate(R.menu.user_action, menu);
+//            return true;
+//        }
+//
+//
+//        // Called each time the action mode is shown. Always called after onCreateActionMode, but
+//        // may be called multiple times if the mode is invalidated.
+//        @Override
+//        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+//            return false; // Return false if nothing is done
+//        }
+//
+//        // Called when the user selects a contextual menu item
+//        @Override
+//        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+//            switch (item.getItemId()) {
+//                case R.id.bin:
+//                    Toast.makeText(context.getApplicationContext(), "Message deleted", Toast.LENGTH_SHORT).show();
+//                    mode.finish(); // Action picked, so close the CAB
+//                    return true;
+//                default:
+//                    return false;
+//            }
+//        }
+//
+//        // Called when the user exits the action mode
+//        @Override
+//        public void onDestroyActionMode(ActionMode mode) {
+//            actionMode = null;
+//        }
+//    };
 }

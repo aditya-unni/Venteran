@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/contrastWhite">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/layout_global_chat"
@@ -11,15 +12,47 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
+        android:background="@color/aquablue"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_gchannel"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/Widget.AppCompat.Toolbar"
-            app:popupTheme="@style/Theme.AppCompat.Light">
+            android:layout_marginTop="0dp"
+            android:background="@color/aquablue"
+            android:id="@+id/toolbarofspecificchat">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/backbutton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white">
+
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/Nameofspecificuser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="86dp"
+                android:layout_toRightOf="@id/backbutton"
+                android:text="Global Chat"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+        </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -30,7 +63,9 @@
         android:layout_marginBottom="16dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@+id/text_gchat_indicator"
-        app:layout_constraintTop_toBottomOf="@+id/layout_global_chat" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_global_chat"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp" />
 
     <TextView
         android:id="@+id/text_gchat_indicator"
@@ -46,14 +81,19 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#e0e0e0"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/layout_gchat_chatbox" />
 
     <RelativeLayout
         android:id="@+id/layout_gchat_chatbox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/messagebackground"
+        android:layout_marginBottom="5dp">
 
 
         <EditText
@@ -62,22 +102,33 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:layout_toStartOf="@+id/text_send_gchat_button"
-            android:background="@android:color/transparent"
+            android:background="@drawable/messagebackground"
             android:hint="Start Typing"
             android:inputType="text"
             android:maxLines="6"
             tools:ignore="Autofill" />
 
-        <ImageButton
-            android:id="@+id/text_send_gchat_button"
-            android:layout_width="64dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:background="@color/aquablue"
-            android:src="@drawable/ic_baseline_send_24" />
+
 
     </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/text_send_gchat_button"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/messagesendbtn"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/layout_gchat_chatbox"
+        app:layout_constraintTop_toBottomOf="@+id/global_messagelist"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

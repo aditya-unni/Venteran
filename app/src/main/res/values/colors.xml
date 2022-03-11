@@ -18,4 +18,6 @@
     <color name="aquapurple">#2953AC</color>
     <color name="halfgrey">#716F6F</color>
     <color name="red">#FF0000</color>
+    <color name="lightgrey">#808183</color>
+    <color name="darkgrey">#59595B</color>
 </resources>

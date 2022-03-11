@@ -3,10 +3,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +20,7 @@ import java.util.List;
 public class GlobalChatAdapter extends RecyclerView.Adapter{
     private static final int TYPE_MESSAGE_SENT = 0;
     private static final int TYPE_MESSAGE_RECEIVED = 1;
+    ImageView receiverImage;
 
     private LayoutInflater inflater;
     private List<JSONObject> messages = new ArrayList<>();
@@ -28,6 +32,7 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
     private class SentMessageHolder extends RecyclerView.ViewHolder{
         TextView messageTxt;
         TextView timeofmessage;
+
         public SentMessageHolder(@NonNull View itemView) {
             super(itemView);
             messageTxt = itemView.findViewById(R.id.sendermessage);
@@ -37,13 +42,17 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
     private class ReceivedMessageHolder extends RecyclerView.ViewHolder{
         TextView receiverTxt;
         TextView nameTxt;
-        TextView timeofmessage;
+        TextView receiverTime;
+        TextView receiverRole;
 
         public ReceivedMessageHolder(@NonNull View itemView) {
             super(itemView);
             nameTxt=itemView.findViewById(R.id.text_reciever);
             receiverTxt=itemView.findViewById(R.id.text_bubblereciver);
-            timeofmessage=itemView.findViewById(R.id.timeofmessage);
+            receiverTime=itemView.findViewById(R.id.text_Receivertime);
+            receiverImage=itemView.findViewById(R.id.image_reciever);
+            receiverRole=itemView.findViewById(R.id.text_role);
+
         }
     }
     @Override
@@ -92,11 +101,21 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
             if (message.getBoolean("isSent")) {
                     SentMessageHolder messageHolder = (SentMessageHolder) holder;
                     messageHolder.messageTxt.setText(message.getString("message"));
+                    messageHolder.timeofmessage.setText(message.getString("timeStamp"));
             } else {
                     Log.d("message_text", message.getString("message"));
                     ReceivedMessageHolder messageHolder = (ReceivedMessageHolder) holder;
+
                     messageHolder.nameTxt.setText(message.getString("username"));
                     messageHolder.receiverTxt.setText(message.getString("message"));
+                    messageHolder.receiverTime.setText(message.getString("timeStamp"));
+//                    messageHolder.receiverRole.setText(message.getString("role"));
+                    Log.d("imageUrl", message.getString("imageUrl"));
+                    if(message.getString("imageUrl")!=null || message.getString("imageUrl").equals("")){
+                        Picasso.get().load(message.getString("imageUrl")).into(receiverImage);
+                    }else{
+                        receiverImage.setImageResource(R.drawable.pfp_user);
+                    }
                 }
             }catch (JSONException e) {
             e.printStackTrace();

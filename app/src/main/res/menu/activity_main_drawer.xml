@@ -6,6 +6,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_Global_Chat"
+            android:icon="@drawable/ic_globe_grid_"
+            android:title="@string/menu_Global_chat" />
+
+        <item
             android:id="@+id/nav_inbox"
             android:icon="@drawable/ic_inbox"
             android:title="@string/menu_inbox" />

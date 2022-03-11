@@ -36,7 +36,6 @@ public class chatFragment extends Fragment {
     RecyclerView mrecyclerview;
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,6 +59,9 @@ public class chatFragment extends Fragment {
                 if (uri!=null) {
                     Picasso.get().load(uri).into(noteViewHolder.mimageviewofuser);
                 }
+                else{
+                    noteViewHolder.mimageviewofuser.setImageResource(R.drawable.pfp_user);
+                }
                 if(firebasemodel.getStatus().equals("Online"))
                 {
                     noteViewHolder.statusofuser.setText(firebasemodel.getStatus());
@@ -74,7 +76,7 @@ public class chatFragment extends Fragment {
                 noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(getActivity(),specificchat.class);
+                        Intent intent=new Intent(getActivity(), SpecificChat.class);
                         intent.putExtra("username",firebasemodel.getUsername());
                         intent.putExtra("receiveruid",firebasemodel.getUid());
                         intent.putExtra("imageuri",firebasemodel.getImage());
