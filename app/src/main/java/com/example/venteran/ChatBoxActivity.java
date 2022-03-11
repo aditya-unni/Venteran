@@ -132,12 +132,12 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                         JSONObject user_data = new JSONObject(document.getData());
                         try {
                             String test_username = user_data.getString("username");
-                            Log.d("username", test_username);
+                            Log.d("username", username);
                             if(username.equals(test_username)){
-
                                 user_role = user_data.getString("role");
                                 Log.d("role", user_role);
                                 ImageURIacessToken = user_data.getString("image");
+                                break;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
