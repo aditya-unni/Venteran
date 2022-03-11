@@ -120,38 +120,40 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 firebasemodel Firebasemodel=documentSnapshot.toObject(firebasemodel.class);
                 username=Firebasemodel.getUsername();
-                role=Firebasemodel.getRole();
+                user_role=Firebasemodel.getRole();
+                ImageURIacessToken=Firebasemodel.getImage();
+
                 Log.d("CUSTOM",Firebasemodel.getUsername());
             }
         });
-        firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        JSONObject user_data = new JSONObject(document.getData());
-                        try {
-                            String test_uid = user_data.getString("uid");
-                            if(test_uid.equals(firebaseAuth.getUid())){
-                                Log.d("username", test_uid);
-                                user_role = user_data.getString("role");
-                                Log.d("role", user_role);
-                                ImageURIacessToken = user_data.getString("image");
-                                Log.d("fetched_image",ImageURIacessToken);
-                                Log.d("document", document.toString());
-                                break;
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-//                                    Log.d("User_Role", document.getData().toString());
-                    }
-
-                } else {
-                    Log.d("Document_Error", "Error getting documents: ", task.getException());
-                }
-            }
-        });
+//        firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        JSONObject user_data = new JSONObject(document.getData());
+//                        try {
+//                            String test_uid = user_data.getString("uid");
+//                            if(test_uid.equals(firebaseAuth.getUid())){
+//                                Log.d("username", test_uid);
+//                                user_role = user_data.getString("role");
+//                                Log.d("role", user_role);
+//                                ImageURIacessToken = user_data.getString("image");
+//                                Log.d("fetched_image",ImageURIacessToken);
+//                                Log.d("document", document.getData().toString());
+//                                break;
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+////                                    Log.d("User_Role", document.getData().toString());
+//                    }
+//
+//                } else {
+//                    Log.d("Document_Error", "Error getting documents: ", task.getException());
+//                }
+//            }
+//        });
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
