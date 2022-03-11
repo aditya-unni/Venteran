@@ -71,23 +71,27 @@
         android:layout_below="@id/viewusername"
         android:layout_centerInParent="true"
         android:layout_marginTop="40dp"
+        android:background="@drawable/buttondrawable"
         android:paddingLeft="20dp"
         android:paddingTop="5dp"
         android:paddingRight="20dp"
-        android:paddingBottom="10dp"
-        android:text="Click here to update your profile."
+        android:paddingBottom="5dp"
+        android:text="Click here to update your profile"
         android:textColor="#303030"
-        android:background="@drawable/contactus_background"
-        android:textSize="20dp">
+        android:textSize="17dp">
 
     </TextView>
-
-    <ImageView
-        android:id="@+id/footer_app"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/movetoupdateprofile"
-        android:layout_marginTop="75dp"
-        android:src="@drawable/ic_wavesopacity_1"/>
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/footer_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/movetoupdateprofile"
+            android:src="@drawable/ic_wavesopacity_1" />
+    </LinearLayout>
 
 </RelativeLayout>
