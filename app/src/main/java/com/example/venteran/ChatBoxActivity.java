@@ -1,5 +1,6 @@
 package com.example.venteran;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,13 +27,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -77,6 +82,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     Intent intent;
     StorageReference storageReference;
     FirebaseStorage firebaseStorage;
+    String user_role;
     String ImageURIacessToken;
 
 
@@ -118,13 +124,27 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 Log.d("CUSTOM",Firebasemodel.getUsername());
             }
         });
-        storageReference=firebaseStorage.getReference();
-        storageReference.child("Images").child(firebaseAuth.getUid()).child("Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(Uri uri) {
-                ImageURIacessToken=uri.toString();
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        JSONObject user_data = new JSONObject(document.getData());
+                        try {
+                            String test_username = user_data.getString("username");
+                            if(username.equals(test_username)){
+                                user_role = user_data.getString("role");
+                                ImageURIacessToken = user_data.getString("image");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+//                                    Log.d("User_Role", document.getData().toString());
+                    }
 
-
+                } else {
+                    Log.d("Document_Error", "Error getting documents: ", task.getException());
+                }
             }
         });
 
@@ -193,7 +213,8 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                     try{
                         JSONObject textData = new JSONObject(text);
                         JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/venteran-56fbc.appspot.com/o/Images%2F83yoCesmvFXcQmcEgJmEHbuZEti2%2FProfile%20Pic?alt=media&token=bee68a0a-1427-4f9c-b9ac-042761de7fcb");
+                        jsonObject.put("imageUrl", textData.getString("imageUrl"));
+                        jsonObject.put("role", textData.getString("role"));
                         jsonObject.put("username",textData.getString("username"));
                         jsonObject.put("message", textData.getString("message"));
                         jsonObject.put("timeStamp", textData.getString("timeStamp"));
@@ -227,9 +248,10 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 DateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     jsonObject.put("username", username);
+                    jsonObject.put("role", user_role);
                     jsonObject.put("message", messageEdit.getText().toString());
                     jsonObject.put("timeStamp", format.format(date));
-                    jsonObject.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/venteran-56fbc.appspot.com/o/Images%2F83yoCesmvFXcQmcEgJmEHbuZEti2%2FProfile%20Pic?alt=media&token=bee68a0a-1427-4f9c-b9ac-042761de7fcb");
+                    jsonObject.put("imageUrl", ImageURIacessToken);
                     jsonObject.put("isSent", true);
                     webSocket.send(jsonObject.toString());
                     messageAdapter.addItem(jsonObject);

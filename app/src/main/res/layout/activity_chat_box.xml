@@ -27,16 +27,16 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical">
 
-        <ImageButton
-            android:id="@+id/backbutton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:tint="@color/white">
+            <ImageButton
+                android:id="@+id/backbutton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/white">
 
-        </ImageButton>
+            </ImageButton>
 
             <TextView
                 android:id="@+id/Nameofspecificuser"
