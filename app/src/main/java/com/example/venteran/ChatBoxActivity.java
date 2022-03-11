@@ -16,7 +16,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -57,6 +60,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -66,7 +70,7 @@ import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 
-public class ChatBoxActivity extends Fragment implements TextWatcher{
+public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatAdapter.OnUserClickListenerglobal{
     private String username;
     private String role;
 
@@ -77,7 +81,13 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
     private EditText messageEdit;
     private ImageButton sendBtn,backbutton;
     private RecyclerView recyclerView;
+
+
     private GlobalChatAdapter messageAdapter;
+    private ArrayList<JSONObject> messagesArrayList;
+
+
+
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -89,6 +99,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
     String ImageURIacessToken;
 
     View globalview;
+    private ActionMode actionMode;
 
 
 
@@ -103,7 +114,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
 
         recyclerView = globalview.findViewById(R.id.global_messagelist);
 
-        messageAdapter = new GlobalChatAdapter(getLayoutInflater());
+        messageAdapter = new GlobalChatAdapter(getLayoutInflater(),this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(messageAdapter);
         initiateSocketConnection();
@@ -260,6 +271,8 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
         messageEdit.setText("");
     }
 
+
+
     private final class SocketListener extends WebSocketListener {
 
         @Override
@@ -287,6 +300,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
                         jsonObject.put("message", textData.getString("message"));
                         jsonObject.put("timeStamp", textData.getString("timeStamp"));
                         jsonObject.put("isSent", false);
+                        jsonObject.put("isSelected",false);
                         messageAdapter.addItem(jsonObject);
                         recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
                     }catch (JSONException e){
@@ -323,6 +337,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
                     jsonObject.put("timeStamp", format.format(date));
                     jsonObject.put("imageUrl", ImageURIacessToken);
                     jsonObject.put("isSent", true);
+                    jsonObject.put("isSelected",false);
                     webSocket.send(jsonObject.toString());
                     messageAdapter.addItem(jsonObject);
                     recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
@@ -336,7 +351,67 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
         });
 
 
+    }
 
+
+    ActionMode.Callback actionModeCallBack = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            getActivity().getMenuInflater().inflate(R.menu.global_user_action,menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.reply_pvt:
+                    Toast.makeText(getContext(), "Reply private", Toast.LENGTH_SHORT).show();
+
+                    return true;
+
+                case R.id.report:
+
+                    return true;
+
+            }
+            return true;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+
+        }
+    };
+
+
+
+    @Override
+    public void onUserLongClick(int position) {
+        if (actionMode==null){
+            actionMode=getActivity().startActionMode(actionModeCallBack);
+        }
+        JSONObject selectedemessage= messagesArrayList.get(position);
+
+        try {
+            int totalnumberofmessageselected=0;
+            for (JSONObject messages:messagesArrayList){
+                if (selectedemessage.getBoolean("isSelected")){
+                    totalnumberofmessageselected++;
+                }
+            }
+            actionMode.setTitle(String.valueOf(totalnumberofmessageselected));
+            if (totalnumberofmessageselected==0||totalnumberofmessageselected==2){
+                actionMode.finish();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        messageAdapter.notifyDataSetChanged();
 
 
     }

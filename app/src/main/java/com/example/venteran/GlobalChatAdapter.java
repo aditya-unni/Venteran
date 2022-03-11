@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,9 +27,21 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
     private LayoutInflater inflater;
     private List<JSONObject> messages = new ArrayList<>();
 
-    public GlobalChatAdapter (LayoutInflater inflater) {
-        this.inflater = inflater;
+
+    public interface OnUserClickListenerglobal{
+        void onUserLongClick(int position);
+
     }
+
+    OnUserClickListenerglobal listenerglobal;
+
+    public GlobalChatAdapter (LayoutInflater inflater,OnUserClickListenerglobal listenerglobal) {
+
+        this.inflater = inflater;
+        this.listenerglobal=listenerglobal;
+    }
+
+
 
     private class SentMessageHolder extends RecyclerView.ViewHolder{
         TextView messageTxt;
@@ -45,6 +58,7 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
         TextView nameTxt;
         TextView receiverTime;
         TextView receiverRole;
+        RelativeLayout receiverlayout;
 
         public ReceivedMessageHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,7 +67,7 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
             receiverTime=itemView.findViewById(R.id.text_Receivertime);
             receiverImage=itemView.findViewById(R.id.image_reciever);
             receiverRole=itemView.findViewById(R.id.text_role);
-
+            receiverlayout=itemView.findViewById(R.id.receivercontainer);
         }
     }
     @Override
@@ -119,11 +133,11 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
                     }else{
                         receiverImage.setImageResource(R.drawable.pfp_user);
                     }
-                    messageHolder.receiverTxt.setOnLongClickListener(new View.OnLongClickListener() {
+                    messageHolder.receiverlayout.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
-
-                            return false;
+                            listenerglobal.onUserLongClick(messageHolder.getPosition());
+                            return true;
                         }
                     });
                 }
@@ -142,4 +156,8 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
         messages.add(jsonObject);
         notifyDataSetChanged();
     }
+
+
+
+
 }
