@@ -25,6 +25,7 @@
         android:gravity="center"
         android:padding="20dp"
         android:text="Enter the OTP which you received"
+        android:fontFamily="@font/alatsi"
         android:textAlignment="center"
         android:textColor="#6e6e6e"
         android:textSize="20sp"
@@ -40,6 +41,7 @@
         android:layout_marginRight="120dp"
         android:gravity="center"
         android:hint="Enter the OTP here"
+        android:fontFamily="@font/alatsi"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="@color/black" />
@@ -48,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Didn't Receive ? Change your Number"
+        android:fontFamily="@font/alatsi"
         android:id="@+id/changenumber"
         android:layout_below="@id/getotp"
         android:layout_centerHorizontal="true"
@@ -66,6 +69,7 @@
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:text="Verify OTP"
+        android:fontFamily="@font/alatsi"
         android:textColor="@color/white" />
 
     <ProgressBar

@@ -13,6 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:text="@string/save_ur_profile"
+        android:fontFamily="@font/alatsi"
         android:textColor="@color/aquablue"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -46,6 +47,7 @@
         android:layout_marginRight="70dp"
         android:gravity="center"
         android:hint="Enter your Username"
+        android:fontFamily="@font/alatsi"
         android:inputType="textCapWords" />
 
     <android.widget.Button
@@ -59,6 +61,7 @@
         android:layout_marginTop="20dp"
         android:background="@color/aquablue"
         android:text="@string/save"
+        android:fontFamily="@font/alatsi"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

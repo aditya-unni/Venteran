@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
    <PreferenceCategory
-       android:title="Theme">
+       android:title="Theme"
+       android:fontFamily="@font/alatsi"
+       >
+
 
       <CheckBoxPreference
           android:title="Night Mode"
+          android:fontFamily="@font/alatsi"
           android:summaryOn="Nightmode is now on"
           android:summaryOff="Nightmode is now off"
           android:key="NIGHTMODE"
@@ -13,8 +17,11 @@
 
    </PreferenceCategory>
 
-   <PreferenceCategory android:title="My Profile">
+   <PreferenceCategory android:title="My Profile"
+       android:fontFamily="@font/alatsi">
+
       <ListPreference android:title="Select Your online Status"
+          android:fontFamily="@font/alatsi"
           android:entryValues="@array/update_status"
           android:entries="@array/update_status"
       />
@@ -25,25 +32,21 @@
 
    <SwitchPreference
       android:title="Status"
+       android:fontFamily="@font/alatsi"
        android:id="@+id/status"
       android:summaryOn="Status is now visible to the others"
       android:summaryOff="Status is not visible to the others"/>
 
-   <PreferenceCategory android:title="Help" android:key="HELP">
-
+   <PreferenceCategory android:title="Help" android:key="HELP"
+       android:fontFamily="@font/alatsi">
 
    </PreferenceCategory>
 
    <PreferenceCategory
       android:title="Logout"
+       android:fontFamily="@font/alatsi"
       android:key="LOGOUT">
 
-
    </PreferenceCategory>
-
-
-
-
-
 
 </PreferenceScreen>

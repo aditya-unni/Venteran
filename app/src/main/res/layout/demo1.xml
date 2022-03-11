@@ -40,6 +40,7 @@
                 android:paddingTop="8dp"
                 android:paddingRight="12dp"
                 android:text="Hello I am date ygyrgyegwgygyeeywgewygewygewyewygyew "
+                android:fontFamily="@font/alatsi"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="320dp"
         android:text="10:00am"
+        android:fontFamily="@font/alatsi"
         android:textColor="#C0C0C0"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
