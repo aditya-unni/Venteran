@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
+            android:fontFamily="@font/alatsi"
             android:textColor="@color/aquablue"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -39,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sub Title"
+            android:fontFamily="@font/alatsi"
             android:textColor="@color/grey"
             android:textSize="13sp" />
 

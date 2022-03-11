@@ -22,6 +22,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/cardviewofuser"
             android:text="Name Display Here"
+            android:fontFamily="@font/alatsi"
             android:textColor="#0b0b0b"
             android:textSize="20sp"
             android:textStyle="bold">
@@ -38,6 +39,7 @@
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@id/cardviewofuser"
             android:text="Status Displays here"
+            android:fontFamily="@font/alatsi"
             android:textColor="#6a6a6a"
             android:textSize="12sp">
 

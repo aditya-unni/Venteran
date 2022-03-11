@@ -21,6 +21,7 @@
             android:paddingRight="60dp"
             android:paddingBottom="15dp"
             android:text="Sender Message Display Here "
+            android:fontFamily="@font/alatsi"
             android:textColor="@color/black"
             android:textSize="18sp">
 
