@@ -65,6 +65,7 @@
             android:layout_toStartOf="@+id/send_button"
             android:background="@android:color/transparent"
             android:hint="Start Typing"
+            android:fontFamily="@font/alatsi"
             android:inputType="text"
             android:maxLines="6"
             tools:ignore="Autofill" />

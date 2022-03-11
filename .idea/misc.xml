@@ -3,52 +3,58 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/drawable/contactus_background.xml" value="0.2625" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.2945" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/drawable/ic_wavesopacity_1.xml" value="0.2945" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/font/josefin_sans_bold.xml" value="0.396875" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/font/josefin_sans_thin.xml" value="0.396875" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_chat_box.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_registration.xml" value="0.2848731884057971" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/chatviewlayout.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/content_navigation_drawer.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/custom_report_user.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/demo2.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_about_us.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_chat_inbox.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_contact_us.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_logout.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/notification.xml" value="0.17831813576494426" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/menu/navigation_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.264" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.196875" />
         <entry key="..\:/Users/Aditya/Desktop/AD/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.196875" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.2703125" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/drawable/ic_logout.xml" value="0.2703125" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_chat_box.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_loading.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_navigation.xml" value="0.4" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_otp_authentication.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_registration.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_set_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_specificchat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/activity_update_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/chatviewlayout.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/content_navigation_drawer.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_delete_msg.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_emergency.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/custom_report_user.xml" value="0.1947463768115942" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/demo.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/demo1.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/demo2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_about_us.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_chat_inbox.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_contact_us.xml" value="0.1711065573770492" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_gallery.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/fragment_profile.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/nav_header_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/notification.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/recieverchatlayout.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/senderchatlayout.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/layout/settings.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mohit Divya/AndroidStudioProjects/Venteran/app/src/main/res/xml/preferences.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable-v21/ic_menu_camera.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable-v21/ic_menu_gallery.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/sachin/Desktop/Sem 4/AD/Venteran/app/src/main/res/drawable-v21/ic_menu_slideshow.xml" value="0.14635416666666667" />
@@ -166,7 +172,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.2" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>

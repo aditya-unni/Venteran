@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    android:id="@+id/receivercontainer"
     android:padding="2dp">
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -41,6 +41,7 @@
             android:layout_marginStart="5dp"
             android:layout_toRightOf="@id/global_specific_card"
             android:text="Sachin"
+            android:fontFamily="@font/alatsi"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -55,6 +56,7 @@
             android:layout_toRightOf="@id/text_reciever"
             android:paddingTop="5dp"
             android:text="COUNSELLOR"
+            android:fontFamily="@font/alatsi"
             android:textSize="10sp"
             android:translationY="6dp"/>
     </RelativeLayout>
@@ -78,6 +80,7 @@
         android:paddingRight="50dp"
         android:paddingBottom="15dp"
         android:text="Sender Message Display Here "
+        android:fontFamily="@font/alatsi"
         android:textColor="@color/black"
         android:textSize="18sp">
 
@@ -93,6 +96,7 @@
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:text="20:09"
+            android:fontFamily="@font/alatsi"
             android:textColor="#434343"
             android:textSize="10sp" />
     </RelativeLayout>
