@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/drawable/contactus_background.xml" value="0.2625" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/drawable/ic_footer.xml" value="0.2945" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/drawable/ic_wavesopacity_1.xml" value="0.2945" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/font/josefin_sans_bold.xml" value="0.396875" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/font/josefin_sans_thin.xml" value="0.396875" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/activity_chat_box.xml" value="0.36666666666666664" />
@@ -21,7 +23,7 @@
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_contact_us.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_logout.xml" value="0.36666666666666664" />
-        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Sies Notes/SEM 4/Project/Android/Venteran/app/src/main/res/layout/notification.xml" value="0.17831813576494426" />
