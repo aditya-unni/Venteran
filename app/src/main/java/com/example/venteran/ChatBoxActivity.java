@@ -133,13 +133,13 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                         try {
                             String test_uid = user_data.getString("uid");
                             if(test_uid.equals(firebaseAuth.getUid())){
-//                                Log.d("username", test_uid);
-//                                user_role = user_data.getString("role");
-//                                Log.d("role", user_role);
-//                                ImageURIacessToken = user_data.getString("image");
-//                                Log.d("fetched_image",ImageURIacessToken);
-//                                break;
+                                Log.d("username", test_uid);
+                                user_role = user_data.getString("role");
+                                Log.d("role", user_role);
+                                ImageURIacessToken = user_data.getString("image");
+                                Log.d("fetched_image",ImageURIacessToken);
                                 Log.d("document", document.toString());
+                                break;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
