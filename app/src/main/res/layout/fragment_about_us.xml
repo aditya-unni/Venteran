@@ -24,6 +24,7 @@
             android:id="@+id/toolbarofspecificchat">
 
             <RelativeLayout
+                android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical">
@@ -56,27 +57,25 @@
 
             </RelativeLayout>
 
-
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout3"
+        android:id="@+id/relativeLayout1"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="7dp"
         android:background="@drawable/aboutus_bg"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_global_chat">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
@@ -87,65 +86,19 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/rn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
+            android:layout_toRightOf="@id/tv1"
             android:paddingRight="10dp"
-            android:text="@string/aditya_email"
+            android:text="003"
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/role1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
-            android:paddingLeft="10dp"
-            android:text="@string/role"
-            android:textColor="@color/darkgrey"
-            android:textSize="15sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="334dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="7dp"
-        android:background="@drawable/aboutus_bg"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alatsi"
-            android:paddingLeft="10dp"
-            android:text="@string/aditya"
-            android:textColor="@color/aquablue"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
-            android:paddingRight="10dp"
-            android:text="@string/aditya_email"
-            android:textAlignment="textEnd" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
+            android:layout_below="@id/tv1"
             android:paddingLeft="10dp"
             android:text="@string/role"
             android:textColor="@color/darkgrey"
@@ -157,6 +110,52 @@
         android:layout_width="334dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout1">
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/divya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv2"
+            android:paddingRight="10dp"
+            android:text="020"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/role2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv2"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="7dp"
@@ -165,38 +164,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
             android:paddingLeft="10dp"
-            android:text="@string/aditya"
+            android:text="@string/kartik"
             android:textColor="@color/aquablue"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/rn3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
+            android:layout_toRightOf="@id/tv3"
             android:paddingRight="10dp"
-            android:text="@string/aditya_email"
+            android:text="033"
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/role3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
+            android:layout_below="@id/tv3"
             android:paddingLeft="10dp"
             android:text="@string/role"
             android:textColor="@color/darkgrey"
             android:textSize="15sp" />
-
 
     </RelativeLayout>
 
@@ -213,33 +211,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
             android:paddingLeft="10dp"
-            android:text="@string/aditya"
+            android:text="@string/saurav"
             android:textColor="@color/aquablue"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/rn4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
+            android:layout_toRightOf="@id/tv4"
             android:paddingRight="10dp"
-            android:text="@string/aditya_email"
+            android:text="038"
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/role4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
+            android:layout_below="@id/tv4"
             android:paddingLeft="10dp"
             android:text="@string/role"
             android:textColor="@color/darkgrey"
@@ -262,30 +260,30 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout4">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
             android:paddingLeft="10dp"
-            android:text="@string/aditya"
+            android:text="@string/shakir"
             android:textColor="@color/aquablue"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/rn5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
+            android:layout_toRightOf="@id/tv5"
             android:paddingRight="10dp"
-            android:text="@string/aditya_email"
+            android:text="040"
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/role5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
+            android:layout_below="@id/tv5"
             android:paddingLeft="10dp"
             android:text="@string/role"
             android:textColor="@color/darkgrey"
@@ -308,30 +306,30 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
             android:paddingLeft="10dp"
-            android:text="@string/aditya"
+            android:text="@string/kevin"
             android:textColor="@color/aquablue"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/rn6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
+            android:layout_toRightOf="@id/tv6"
             android:paddingRight="10dp"
-            android:text="@string/aditya_email"
+            android:text="043"
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/role6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
+            android:layout_below="@id/tv6"
             android:paddingLeft="10dp"
             android:text="@string/role"
             android:textColor="@color/darkgrey"
@@ -354,30 +352,30 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
             android:paddingLeft="10dp"
-            android:text="@string/aditya"
+            android:text="@string/sachin"
             android:textColor="@color/aquablue"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/rn7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
+            android:layout_toRightOf="@id/tv7"
             android:paddingRight="10dp"
-            android:text="@string/aditya_email"
+            android:text="052"
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/role7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
+            android:layout_below="@id/tv7"
             android:paddingLeft="10dp"
             android:text="@string/role"
             android:textColor="@color/darkgrey"
@@ -399,37 +397,34 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout7">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
             android:paddingLeft="10dp"
-            android:text="@string/aditya"
+            android:text="@string/vishnu"
             android:textColor="@color/aquablue"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/rn8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textView13"
+            android:layout_toRightOf="@id/tv8"
             android:paddingRight="10dp"
-            android:text="@string/aditya_email"
+            android:text="080"
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/role8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
+            android:layout_below="@id/tv8"
             android:paddingLeft="10dp"
             android:text="@string/role"
             android:textColor="@color/darkgrey"
             android:textSize="15sp" />
     </RelativeLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

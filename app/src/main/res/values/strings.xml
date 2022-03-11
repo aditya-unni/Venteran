@@ -72,21 +72,13 @@
 
     <string name="role">Software Developer</string>
     <string name="kartik">Kartik</string>
-    <string name="kartik_email">abc@gmail.com</string>
     <string name="aditya">Aditya</string>
-    <string name="aditya_email">abc@gmail.com</string>
     <string name="sachin">Sachin</string>
-    <string name="sachin_email">abc@gmail.com</string>
     <string name="kevin">Kevin</string>
-    <string name="kevin_email">abc@gmail.com</string>
     <string name="vishnu">Vishnu</string>
-    <string name="vishnu_email">abc@gmail.com</string>
     <string name="divya">Divya</string>
-    <string name="divya_email">abc@gmail.com</string>
     <string name="shakir">Shakir</string>
-    <string name="shakir_email">abc@gmail.com</string>
     <string name="saurav">Saurav</string>
-    <string name="saurav_email">abc@gmail.com</string>
 
     <string name="title_activity_navigation">Navigation</string>
 </resources>
