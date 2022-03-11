@@ -16,7 +16,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,7 +66,7 @@ import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 
-public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
+public class ChatBoxActivity extends Fragment implements TextWatcher{
     private String username;
     private String role;
 
@@ -85,25 +88,23 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     String user_role;
     String ImageURIacessToken;
 
+    View globalview;
 
 
 
     FirebaseFirestore firebaseFirestore;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_chat_box);
-        Toast.makeText(ChatBoxActivity.this,
-                "Loaded ChatActivity",
-                Toast.LENGTH_SHORT).show();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        globalview=inflater.inflate(R.layout.activity_chat_box,container,false);
+        Toast.makeText(getContext(), "Loaded ChatActivity", Toast.LENGTH_SHORT).show();
         username = "Slowqueso";
-        intent = getIntent();
-        recyclerView = findViewById(R.id.global_messagelist);
-        backbutton=findViewById(R.id.backbutton);
+
+        recyclerView = globalview.findViewById(R.id.global_messagelist);
+        backbutton=globalview.findViewById(R.id.backbutton);
         messageAdapter = new GlobalChatAdapter(getLayoutInflater());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(messageAdapter);
         initiateSocketConnection();
         firebaseStorage = FirebaseStorage.getInstance();
@@ -113,19 +114,6 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
         firebaseFirestore=FirebaseFirestore.getInstance();
 
 
-
-//        DocumentReference dref=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-//        dref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                firebasemodel Firebasemodel=documentSnapshot.toObject(firebasemodel.class);
-//                username=Firebasemodel.getUsername();
-//                user_role=Firebasemodel.getRole();
-//                ImageURIacessToken=Firebasemodel.getImage();
-//                Log.d("CUSTOM_IMAGE", Firebasemodel.getImage().toString());
-//                Log.d("CUSTOM",Firebasemodel.getUsername());
-//            }
-//        });
         firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -155,15 +143,86 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 }
             }
         });
-
-        backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
+        return globalview;
     }
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.activity_chat_box);
+//        Toast.makeText(ChatBoxActivity.this,
+//                "Loaded ChatActivity",
+//                Toast.LENGTH_SHORT).show();
+//        username = "Slowqueso";
+//        intent = getIntent();
+//        recyclerView = findViewById(R.id.global_messagelist);
+//        backbutton=findViewById(R.id.backbutton);
+//        messageAdapter = new GlobalChatAdapter(getLayoutInflater());
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(messageAdapter);
+//        initiateSocketConnection();
+//        firebaseStorage = FirebaseStorage.getInstance();
+//
+//
+//        firebaseAuth=FirebaseAuth.getInstance();
+//        firebaseFirestore=FirebaseFirestore.getInstance();
+//
+//
+//
+//
+//
+//
+////        DocumentReference dref=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
+////        dref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+////            @Override
+////            public void onSuccess(DocumentSnapshot documentSnapshot) {
+////                firebasemodel Firebasemodel=documentSnapshot.toObject(firebasemodel.class);
+////                username=Firebasemodel.getUsername();
+////                user_role=Firebasemodel.getRole();
+////                ImageURIacessToken=Firebasemodel.getImage();
+////                Log.d("CUSTOM_IMAGE", Firebasemodel.getImage().toString());
+////                Log.d("CUSTOM",Firebasemodel.getUsername());
+////            }
+////        });
+//        firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        JSONObject user_data = new JSONObject(document.getData());
+//                        Log.d("document", document.getData().toString());
+//                        try {
+//                            String test_uid = user_data.getString("uid");
+//                            if(test_uid.equals(firebaseAuth.getUid())){
+//                                username = user_data.getString("username");
+//                                Log.d("username", username);
+//                                user_role = user_data.getString("role");
+//                                Log.d("role", user_role);
+//                                ImageURIacessToken = user_data.getString("image");
+//                                Log.d("fetched_image",ImageURIacessToken);
+//                                break;
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+////                                    Log.d("User_Role", document.getData().toString());
+//                    }
+//
+//                } else {
+//                    Log.d("Document_Error", "Error getting documents: ", task.getException());
+//                }
+//            }
+//        });
+//
+//        backbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//
+//    }
     private void initiateSocketConnection() {
 
         try{
@@ -183,7 +242,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        Toast.makeText(ChatBoxActivity.this,
+        Toast.makeText(getContext(),
                 "Breh",
                 Toast.LENGTH_SHORT).show();
     }
@@ -206,8 +265,8 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
         @Override
         public void onOpen(WebSocket webSocket, Response response) {
             super.onOpen(webSocket, response);
-            runOnUiThread(() -> {
-                Toast.makeText(ChatBoxActivity.this,
+            getActivity().runOnUiThread(() -> {
+                Toast.makeText(getContext(),
                         "Socket Connection Successful!",
                         Toast.LENGTH_SHORT).show();
                 initializeView();
@@ -217,7 +276,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
         @Override
         public void onMessage(WebSocket webSocket, String text) {
             super.onMessage(webSocket, text);
-                runOnUiThread(()->{
+                getActivity().runOnUiThread(()->{
                     try{
                         JSONObject textData = new JSONObject(text);
                         JSONObject jsonObject = new JSONObject();
@@ -247,12 +306,12 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
     }
     private void initializeView() {
 
-        messageEdit = findViewById(R.id.edit_text_global);
-        sendBtn = findViewById(R.id.text_send_gchat_button);
+        messageEdit = globalview.findViewById(R.id.edit_text_global);
+        sendBtn = globalview.findViewById(R.id.text_send_gchat_button);
         sendBtn.setOnClickListener(v -> {
             if(messageEdit.getText().toString() != ""){
                 JSONObject jsonObject = new JSONObject();
-                Toast.makeText(ChatBoxActivity.this, "Clicked ",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Clicked ",Toast.LENGTH_SHORT).show();
                 Date date = new Date();
                 DateFormat format = new SimpleDateFormat("HH:mm");
                 try {

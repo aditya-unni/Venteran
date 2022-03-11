@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Venteran">
-        <activity
-            android:name=".ChatBoxActivity"
-            android:exported="false" />
+
         <activity
             android:name=".UpdateProfile"
             android:exported="false" />

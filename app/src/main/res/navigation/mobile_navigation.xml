@@ -35,6 +35,11 @@
         android:label="@string/menu_aboutus"
         android:name="com.example.venteran.aboutus_fragment"
         tools:layout="@layout/fragment_about_us"/>
+    <fragment
+        android:id="@+id/nav_Global_Chat"
+        android:label="@string/menu_Global_chat"
+        android:name="com.example.venteran.ChatBoxActivity"
+        tools:layout="@layout/activity_chat_box"/>
 
 
 </navigation>

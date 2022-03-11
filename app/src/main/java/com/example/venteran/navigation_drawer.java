@@ -91,7 +91,7 @@ public class navigation_drawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                 R.id.nav_inbox,R.id.nav_myprofile,R.id.nav_aboutus,R.id.nav_contactus,R.id.nav_settings)
+                 R.id.nav_Global_Chat,R.id.nav_inbox,R.id.nav_myprofile,R.id.nav_aboutus,R.id.nav_contactus,R.id.nav_settings)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
@@ -107,17 +107,17 @@ public class navigation_drawer extends AppCompatActivity {
             }
         });
 
-        MenuItem globalMenuItem = navigationView.getMenu().findItem(R.id.nav_Global_Chat);
-        globalMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent chatBox = new Intent(navigation_drawer.this, ChatBoxActivity.class);
-                String USERNAME = "username";
-                chatBox.putExtra(USERNAME, "Slowqueso");
-                startActivity(chatBox);
-                return true;
-            }
-        });
+//        MenuItem globalMenuItem = navigationView.getMenu().findItem(R.id.nav_Global_Chat);
+//        globalMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Intent chatBox = new Intent(navigation_drawer.this, ChatBoxActivity.class);
+//                String USERNAME = "username";
+//                chatBox.putExtra(USERNAME, "Slowqueso");
+//                startActivity(chatBox);
+//                return true;
+//            }
+//        });
 
 
         MenuItem emergencyMenuItem = navigationView.getMenu().findItem(R.id.nav_emergency);
