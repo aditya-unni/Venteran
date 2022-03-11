@@ -150,7 +150,7 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
                                     try {
                                         String user_role = user_data.getString("role");
                                         mreceiveruid = user_data.getString("uid");
-                                        if (user_role.equals("Counselor")) {
+                                        if (user_role.equals("Counsellor")) {
                                                 sendNotification(mreceiveruid, msendername);
                                         }
                                     } catch (JSONException e) {
@@ -163,7 +163,7 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
                             }
                         }
                     });
-                    Toast.makeText(c , "Counselors has been notified", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c , "Counsellors has been notified", Toast.LENGTH_SHORT).show();
                     dismiss();
                     break;
             }

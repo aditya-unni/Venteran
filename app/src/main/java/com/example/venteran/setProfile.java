@@ -5,11 +5,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,8 +20,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.backendless.DataPermission;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,9 +33,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -55,7 +66,9 @@ public class setProfile extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
 
     private String ImageUriAccessToken=null;
-
+    String newname;
+    private boolean available = false;
+    TextView setprofile_availablemessage;
 
     ProgressBar mprogressbarofsetprofile;
 
@@ -79,6 +92,7 @@ public class setProfile extends AppCompatActivity {
         msaveprofile=findViewById(R.id.saveProfile);
         mprogressbarofsetprofile=findViewById(R.id.progreesbarofsetprofile);
 
+        setprofile_availablemessage = findViewById(R.id.setprofile_availablemessage);
 
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
@@ -132,11 +146,66 @@ public class setProfile extends AppCompatActivity {
                 }
             }
         });
+
+        mgetusername.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                com.google.firebase.firestore.Query query = firebaseFirestore.collection("Users");
+                query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            newname = mgetusername.getText().toString().replaceAll(" ", "");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                JSONObject user_data = new JSONObject(document.getData());
+                                try {
+                                    String fuser_name = user_data.getString("username");
+                                    if (newname.equals(fuser_name)) {
+                                        available = false;
+                                        break;
+                                    }
+                                    else if(newname.isEmpty()) {
+                                        available = false;
+                                    }
+                                    else{
+                                        available = true;
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            if(available){
+                                msaveprofile.setClickable(true);
+                                setprofile_availablemessage.setText("");
+                            }
+                            else{
+                                msaveprofile.setClickable(false);
+                                setprofile_availablemessage.setText("Username Unavailable");
+                            }
+                        } else {
+                            Log.d("Document_Error", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+            }
+        });
+
     }
 
     private void sendDataForNewUser(){
         sendDataToRealTimeDatabase();
-
     }
     private void sendDataToRealTimeDatabase(){
         username=mgetusername.getText().toString().trim();

@@ -5,32 +5,45 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import java.util.concurrent.TimeUnit;
 
 public class UpdateProfile extends AppCompatActivity {
 
@@ -63,8 +76,10 @@ public class UpdateProfile extends AppCompatActivity {
     private static int PICK_IMAGE=123;
 
     android.widget.Button mupdateprofilebutton;
-    String newname;
+    String newname, msenderuid;
+    TextView update_availablemessage;
 
+    private boolean available = false;
 
 
 
@@ -85,7 +100,11 @@ public class UpdateProfile extends AppCompatActivity {
         firebaseStorage=FirebaseStorage.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
 
+        update_availablemessage = findViewById(R.id.update_availablemessage);
+
         intent=getIntent();
+
+        msenderuid = FirebaseAuth.getInstance().getUid();
 
         setSupportActionBar(mtoolbarofupdateprofile);
 
@@ -101,7 +120,77 @@ public class UpdateProfile extends AppCompatActivity {
         mnewusername.setText(intent.getStringExtra("nameofuser"));
 
 
+        mgetnewimageinimageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(intent,PICK_IMAGE);
+            }
+        });
 
+        storageReference=firebaseStorage.getReference();
+        storageReference.child("Images").child(firebaseAuth.getUid()).child("Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                ImageURIacessToken=uri.toString();
+                Picasso.get().load(uri).into(mgetnewimageinimageview);
+            }
+        });
+
+        mnewusername.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                com.google.firebase.firestore.Query query = firebaseFirestore.collection("Users").whereNotEqualTo("uid", msenderuid);
+                query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            newname = mnewusername.getText().toString().trim();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                JSONObject user_data = new JSONObject(document.getData());
+                                try {
+                                    String fuser_name = user_data.getString("username");
+                                    if (newname.equals(fuser_name)) {
+                                        available = false;
+                                        break;
+                                    }
+                                    else if(newname.isEmpty()) {
+                                        available = false;
+                                    }
+                                    else{
+                                        available = true;
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            if(available){
+                                mupdateprofilebutton.setClickable(true);
+                                update_availablemessage.setText("");
+                            }
+                            else{
+                                mupdateprofilebutton.setClickable(false);
+                                update_availablemessage.setText("Username Unavailable");
+                            }
+                        } else {
+                            Log.d("Document_Error", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+            }
+        });
 
         DatabaseReference databaseReference=firebaseDatabase.getReference(firebaseAuth.getUid());
 
@@ -109,7 +198,7 @@ public class UpdateProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                newname=mnewusername.getText().toString();
+                newname = mnewusername.getText().toString();
                 if(newname.isEmpty())
                 {
                     Toast.makeText(getApplicationContext(),"Name is Empty",Toast.LENGTH_SHORT).show();
@@ -142,37 +231,10 @@ public class UpdateProfile extends AppCompatActivity {
                     startActivity(intent);
                     finish();
 
-
-
-
                 }
 
-
-
-
-
             }
         });
-
-
-        mgetnewimageinimageview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(intent,PICK_IMAGE);
-            }
-        });
-
-        storageReference=firebaseStorage.getReference();
-        storageReference.child("Images").child(firebaseAuth.getUid()).child("Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                ImageURIacessToken=uri.toString();
-                Picasso.get().load(uri).into(mgetnewimageinimageview);
-            }
-        });
-
-
 
 
 
@@ -313,10 +375,9 @@ public class UpdateProfile extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-        documentReference.update("status","Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
+        documentReference.update("status","Online").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(),"Now User is Offline",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -328,7 +389,6 @@ public class UpdateProfile extends AppCompatActivity {
         documentReference.update("status","Online").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(),"Now User is Online",Toast.LENGTH_SHORT).show();
             }
         });
 

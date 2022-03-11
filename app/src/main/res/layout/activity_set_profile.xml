@@ -48,12 +48,22 @@
         android:hint="Enter your Username"
         android:inputType="textCapWords" />
 
+    <TextView
+        android:id="@+id/setprofile_availablemessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/getusername"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/red" />
+
     <android.widget.Button
         android:id="@+id/saveProfile"
         android:layout_width="150dp"
         android:layout_height="50dp"
 
-        android:layout_below="@id/getusername"
+        android:layout_below="@id/setprofile_availablemessage"
 
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -66,8 +76,22 @@
         android:id="@+id/progreesbarofsetprofile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/saveProfile"
-        android:visibility="invisible"
-        android:layout_marginTop="30dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/footer_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/progreesbarofsetprofile"
+            android:src="@drawable/ic_wavesopacity_1" />
+    </LinearLayout>
+
 </RelativeLayout>
