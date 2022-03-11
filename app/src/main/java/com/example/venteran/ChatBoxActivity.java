@@ -102,7 +102,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher{
         username = "Slowqueso";
 
         recyclerView = globalview.findViewById(R.id.global_messagelist);
-        backbutton=globalview.findViewById(R.id.backbutton);
+
         messageAdapter = new GlobalChatAdapter(getLayoutInflater());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(messageAdapter);
