@@ -109,8 +109,13 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
                     messageHolder.nameTxt.setText(message.getString("username"));
                     messageHolder.receiverTxt.setText(message.getString("message"));
                     messageHolder.receiverTime.setText(message.getString("timeStamp"));
-                    messageHolder.receiverRole.setText(message.getString("role"));
-                    Picasso.get().load(message.getString("imageUrl")).into(receiverImage);
+//                    messageHolder.receiverRole.setText(message.getString("role"));
+                    Log.d("imageUrl", message.getString("imageUrl"));
+                    if(message.getString("imageUrl")!=null || message.getString("imageUrl").equals("")){
+                        Picasso.get().load(message.getString("imageUrl")).into(receiverImage);
+                    }else{
+                        receiverImage.setImageResource(R.drawable.pfp_user);
+                    }
                 }
             }catch (JSONException e) {
             e.printStackTrace();
