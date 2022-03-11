@@ -1,43 +1,435 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
-    android:background="@color/white">
+    android:background="@color/contrastWhite">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_global_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="4dp"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/contrastWhite"
-        app:cardMaxElevation="12dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/aquablue"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/aditya"
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/alatsi"
-            android:text="@string/aditya"
-            android:textColor="@color/aquablue"
-            android:layout_marginEnd="70dp"
-            android:textSize="24sp" />
+            android:layout_marginTop="0dp"
+            android:padding="10dp"
+            android:background="@color/aquablue"
+            android:id="@+id/toolbarofspecificchat">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageButton
+                    android:id="@+id/backbutton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:tint="@color/white">
+
+                </ImageButton>
+
+                <TextView
+                    android:id="@+id/Nameofspecificuser"
+                    android:layout_width="86dp"
+                    android:layout_height="28dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="111dp"
+                    android:layout_toRightOf="@id/backbutton"
+                    android:gravity="center_horizontal"
+                    android:text="About Us"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_global_chat">
 
         <TextView
+            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
             android:text="@string/aditya_email"
-            android:layout_toRightOf="@id/aditya">
+            android:textAlignment="textEnd" />
 
-        </TextView>
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
+            android:text="@string/aditya_email"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
+            android:text="@string/aditya_email"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
+            android:text="@string/aditya_email"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout5"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout4">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
+            android:text="@string/aditya_email"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout6"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
+            android:text="@string/aditya_email"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout7"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
+            android:text="@string/aditya_email"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout8"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/aboutus_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout7">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:text="@string/aditya"
+            android:textColor="@color/aquablue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView13"
+            android:paddingRight="10dp"
+            android:text="@string/aditya_email"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:paddingLeft="10dp"
+            android:text="@string/role"
+            android:textColor="@color/darkgrey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
