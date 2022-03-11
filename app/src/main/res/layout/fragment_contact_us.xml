@@ -3,130 +3,202 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="186dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/alatsi"
-        android:gravity="center"
-        android:text="@string/contactus"
-        android:textColor="@color/aquablue"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="292dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:hint="@string/emailhint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="153dp" />
+    android:layout_height="match_parent"
+    android:background="@color/contrastWhite">
 
     <TextView
-        android:id="@+id/contactusq1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="125dp"
-        android:fontFamily="@font/alatsi"
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="36dp"
         android:text="@string/contactus_q1"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/planets_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-    <TextView
-        android:id="@+id/contactusq2"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_global_chat"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="60dp"
-        android:fontFamily="@font/alatsi"
-        android:text="@string/contactus_q2"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="343dp" />
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/aquablue"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/contactusemail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="211dp"
-        android:fontFamily="@font/alatsi"
-        android:text="@string/contactus_email"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="532dp" />
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:padding="10dp"
+            android:background="@color/aquablue"
+            android:id="@+id/toolbarofspecificchat">
 
-    <TextView
-        android:id="@+id/gmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alatsi"
-        android:text="@string/contactus_gmail"
-        android:textColor="@color/aquablue"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="565dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/contactus_send"
-        android:layout_width="98dp"
-        android:layout_height="45dp"
-        android:fontFamily="@font/alatsi"
-        android:text="@string/send"
-        app:backgroundTint="@color/aquablue"
-        tools:layout_editor_absoluteX="271dp"
-        tools:layout_editor_absoluteY="597dp" />
+                <ImageButton
+                    android:id="@+id/backbutton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:tint="@color/white">
+
+                </ImageButton>
+
+                <TextView
+                    android:id="@+id/Nameofspecificuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="86dp"
+                    android:layout_toRightOf="@id/backbutton"
+                    android:text="Contact Us"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="331dp"
-        android:layout_height="98dp"
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="297dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="36dp"
         android:ems="10"
-        android:fontFamily="@font/alatsi"
-        android:gravity="start|top"
-        android:hint="@string/contactus_txtbox"
-        android:inputType="textMultiLine"
-        android:textSize="14sp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        android:hint="Enter your email"
+        app:layout_constraintTop_toBottomOf="@+id/layout_global_chat" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="41dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="69dp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_global_chat"
+        android:src="@drawable/ic_mail" />
+
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="19dp"
+        android:background="@drawable/contactus_background"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/contactus_q2"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="391dp" />
+        app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/contactus_background"
+        android:hint="@string/contactus_txtbox"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/contactus_email"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <ImageView
-        android:id="@+id/imgmail"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        app:srcCompat="@drawable/ic_inbox"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="160dp" />
+        android:id="@+id/imageView2"
+        android:layout_width="41dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="67dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        android:src="@drawable/ic_googlemail" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="31dp"
-        android:layout_height="25dp"
-        app:srcCompat="@drawable/ic_googlemail"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="565dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="73dp"
+        android:paddingTop="5dp"
+        android:text="@string/contactus_gmail"
+        android:textColor="@color/aquablue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="281dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/aquablue"
+        android:text="Send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

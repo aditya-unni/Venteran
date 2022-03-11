@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -60,7 +61,7 @@ public class ProfileFragment extends Fragment {
 
         firebaseDatabase=FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/");
         firebaseAuth=FirebaseAuth.getInstance();
-        firebaseStorage=FirebaseStorage.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance("gs://venteran-56fbc.appspot.com/");
 
 
 
@@ -73,7 +74,20 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onSuccess(Uri uri) {
                 ImageURIacessToken=uri.toString();
-                Picasso.get().load(uri).into(mviewuserimageinimageview);
+                if(ImageURIacessToken==null)
+                {
+                    Toast.makeText(getActivity(),"null is recieved",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Picasso.get().load(uri).into(mviewuserimageinimageview);
+                }
+
+            }
+
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
 
             }
         });

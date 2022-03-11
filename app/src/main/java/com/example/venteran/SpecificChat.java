@@ -240,7 +240,11 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                         }
                     });
 
-                    reference = firebaseDatabase.getReference("Users").child(fuser.getUid());
+                    mgetmessage.setText(null);
+
+
+
+                    reference = firebaseDatabase.getReference("Users").child(mrecieveruid);
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -324,6 +328,43 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.bin:
+                    for (Messages deletemessage:messagesArrayList){
+                        if (deletemessage.isSelected()){
+                            firebaseDatabase=FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                            DatabaseReference deletesendref = firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
+                            Query sendquery = deletesendref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
+                            sendquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for(DataSnapshot ds:snapshot.getChildren()){
+                                        ds.getRef().removeValue();
+                                    }
+                                    deletemessage.setDeleted(true);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            DatabaseReference deleterecref = firebaseDatabase.getReference().child("chats").child(recieverroom).child("messages");
+                            Query recquery = deleterecref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
+                            recquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for(DataSnapshot ds:snapshot.getChildren()){
+                                        ds.getRef().removeValue();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            messagesAdapter.notifyDataSetChanged();
+                        }
+                    }
                     Toast.makeText(getApplicationContext(), "Message deleted", Toast.LENGTH_SHORT).show();
                     mode.finish(); // Action picked, so close the CAB
                     return true;
@@ -341,6 +382,10 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
             actionMode=null;
         }
     };
+
+
+
+
 
 
 

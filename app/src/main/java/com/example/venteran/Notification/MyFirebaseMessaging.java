@@ -51,9 +51,11 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
         Intent intent = new Intent(this, SpecificChat.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("userid", user);
-        intent.putExtras(bundle);
+
+        intent.putExtra("username",user);
+        intent.putExtra("receiveruid",user);
+        intent.putExtra("imageuri","");
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT);
         Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -82,9 +84,11 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
         Intent intent = new Intent(this, SpecificChat.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("userid", user);
-        intent.putExtras(bundle);
+
+        intent.putExtra("username",user);
+        intent.putExtra("receiveruid",user);
+        intent.putExtra("imageuri","");
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT);
 
