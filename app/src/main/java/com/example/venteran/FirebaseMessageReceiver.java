@@ -16,8 +16,7 @@
 //public class FirebaseMessageReceiver extends FirebaseMessagingService {
 //
 //    @Override
-//    public void
-//    onMessageReceived(RemoteMessage remoteMessage) {
+//    public void onMessageReceived(RemoteMessage remoteMessage) {
 //
 //        if (remoteMessage.getNotification() != null) {
 //            showNotification(

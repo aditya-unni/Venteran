@@ -2,15 +2,23 @@ package com.example.venteran;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 
 import com.example.venteran.Notification.Client;
 import com.example.venteran.Notification.Data;
@@ -27,10 +35,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +64,7 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
 
-    boolean notify = false;
-
-    String msenderuid, msendername, mrecieveruid;
+    String msenderuid, msendername, mreceiveruid, msenderimage;
     APIService apiService;
 
     List<String> list = new ArrayList<>();
@@ -100,34 +109,25 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
-        updateToken(FirebaseInstanceId.getInstance().getToken());
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
+        DocumentReference tempReference1 = FirebaseFirestore.getInstance().collection("Users").document(msenderuid);
+        tempReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    firebasemodel Firebasemodel = document.toObject(firebasemodel.class);
+                    if (document.exists()){
+                        msenderimage = Firebasemodel.getImage();
+                    }
+                }
+            }
+        });
+
     }
 
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.radiobtn:
-//                switch (v.getId())
-//                {
-//                    case R.id.cancelbtn3:
-//                        Toast.makeText(getOwnerActivity(), "Emergency Cancelled", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.proceedbtn:
-//                        Toast.makeText(getOwnerActivity(), "Radio Clicked and Proceed", Toast.LENGTH_SHORT).show();
-//                }
-//                break;
-//            case R.id.btn_no:
-//                dismiss();
-//                break;
-//            default:
-//                break;
-//        }
-//        dismiss();
-//    }
 
     @Override
     public void onClick(View v) {
@@ -140,8 +140,8 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
                     dismiss();
                     break;
                 case R.id.proceedbtn:
-                    com.google.firebase.firestore.Query query = firebaseFirestore.collection("Users").whereNotEqualTo("uid",firebaseAuth.getUid());
-                    firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    com.google.firebase.firestore.Query query = firebaseFirestore.collection("Users").whereNotEqualTo("uid", msenderuid);
+                    query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -149,14 +149,13 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
                                     JSONObject user_data = new JSONObject(document.getData());
                                     try {
                                         String user_role = user_data.getString("role");
-                                        mrecieveruid = user_data.getString("uid");
+                                        mreceiveruid = user_data.getString("uid");
                                         if (user_role.equals("Counselor")) {
-                                            sendNotification(mrecieveruid, msendername);
+                                                sendNotification(mreceiveruid, msendername);
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
-//                                    Log.d("User_Role", document.getData().toString());
                                 }
 
                             } else {
@@ -182,12 +181,6 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
 
     }
 
-    private void updateToken(String token) {
-        DatabaseReference reference = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Tokens");
-        Token tokenl = new Token(token);
-        reference.child(fuser.getUid()).setValue(tokenl);
-    }
-
 
     private void sendNotification(String receiver, String username) {
         DatabaseReference tokens = FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Tokens");
@@ -197,8 +190,8 @@ public class CustomEmergencyDialog extends Dialog implements View.OnClickListene
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Token token = snapshot.getValue(Token.class);
-                    Data data = new Data(fuser.getUid(), R.drawable.ic_image_venteranlogo, username + " needs help. ASAP!",
-                            "Emergency!! Attention Required!", receiver);
+                    Data data = new Data(msenderuid, R.drawable.ic_image_venteranlogo, username + " needs help. ASAP!",
+                            "Emergency!! Attention Required!", receiver, msendername, msenderimage);
 
                     Sender sender = new Sender(data, token.getToken());
 
