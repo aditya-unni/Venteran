@@ -1,20 +1,9 @@
 package com.example.venteran;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -24,45 +13,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -84,8 +59,8 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
 
 
     private GlobalChatAdapter messageAdapter;
-    private ArrayList<JSONObject> messagesArrayList;
-
+    private List<JSONObject> messagesArrayList;
+    private int selectedposition;
 
 
 
@@ -303,9 +278,11 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
                         jsonObject.put("isSelected",false);
                         messageAdapter.addItem(jsonObject);
                         recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
+                        messagesArrayList=messageAdapter.getList();
                     }catch (JSONException e){
                         e.printStackTrace();
                     }
+                    Toast.makeText(getContext(), "On message", Toast.LENGTH_SHORT).show();
                 });
 
         }
@@ -323,7 +300,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
         messageEdit = globalview.findViewById(R.id.edit_text_global);
         sendBtn = globalview.findViewById(R.id.text_send_gchat_button);
         sendBtn.setOnClickListener(v -> {
-            if(messageEdit.getText().toString() != ""){
+            if(!messageEdit.getText().toString().isEmpty()){
                 JSONObject jsonObject = new JSONObject();
                 Toast.makeText(getContext(), "Clicked ",Toast.LENGTH_SHORT).show();
                 Date date = new Date();
@@ -349,7 +326,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
                 resetMessageEdit();
             }
         });
-
+        Toast.makeText(getContext(), "This is initialize", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -371,11 +348,22 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
             switch (item.getItemId()){
                 case R.id.reply_pvt:
                     Toast.makeText(getContext(), "Reply private", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(getContext(),SpecificChat.class);
+                    try {
+                        intent.putExtra("username",messagesArrayList.get(selectedposition).getString("username"));
+                        intent.putExtra("receiveruid",messagesArrayList.get(selectedposition).getString("uid"));
+                        intent.putExtra("imageuri",messagesArrayList.get(selectedposition).getString("imageUrl"));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
 
                     return true;
 
                 case R.id.report:
-
+                    Toast.makeText(getContext(), "Reported", Toast.LENGTH_SHORT).show();
                     return true;
 
             }
@@ -384,7 +372,15 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
 
         @Override
         public void onDestroyActionMode(ActionMode mode) {
-
+            for(int i=0;i<messagesArrayList.size();i++){
+                try {
+                    messagesArrayList.get(i).put("isSelected",false);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            messageAdapter.notifyDataSetChanged();
+            actionMode=null;
         }
     };
 
@@ -395,12 +391,17 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
         if (actionMode==null){
             actionMode=getActivity().startActionMode(actionModeCallBack);
         }
-        JSONObject selectedemessage= messagesArrayList.get(position);
+        JSONObject selectedmessage= messageAdapter.getItem(position);
+
+        messagesArrayList=messageAdapter.getList();
+        selectedposition=position;
+
 
         try {
+            messagesArrayList.get(position).put("isSelected",!selectedmessage.getBoolean("isSelected"));
             int totalnumberofmessageselected=0;
             for (JSONObject messages:messagesArrayList){
-                if (selectedemessage.getBoolean("isSelected")){
+                if (messages.getBoolean("isSelected")){
                     totalnumberofmessageselected++;
                 }
             }

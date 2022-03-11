@@ -75,12 +75,12 @@
         android:id="@+id/text_bubblereciver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alatsi"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingRight="50dp"
         android:paddingBottom="15dp"
         android:text="Sender Message Display Here "
-        android:fontFamily="@font/alatsi"
         android:textColor="@color/black"
         android:textSize="18sp">
 

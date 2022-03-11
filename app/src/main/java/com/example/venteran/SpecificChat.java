@@ -201,6 +201,8 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         mbackbuttonofspecificchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(SpecificChat.this,navigation_drawer.class);
+                startActivity(intent);
                 finish();
             }
         });

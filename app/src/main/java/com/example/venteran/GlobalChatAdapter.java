@@ -17,7 +17,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class GlobalChatAdapter extends RecyclerView.Adapter{
     private static final int TYPE_MESSAGE_SENT = 0;
@@ -133,6 +132,15 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
                     }else{
                         receiverImage.setImageResource(R.drawable.pfp_user);
                     }
+
+
+                    if (messages.get(position).getBoolean("isSelected")){
+                        messageHolder.receiverTxt.setBackgroundResource(R.drawable.onholdreceiver);
+                    }
+                    else {
+                        messageHolder.receiverTxt.setBackgroundResource(R.drawable.recieverchatdrawable);
+                    }
+
                     messageHolder.receiverlayout.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
@@ -155,6 +163,13 @@ public class GlobalChatAdapter extends RecyclerView.Adapter{
     public void addItem (JSONObject jsonObject) {
         messages.add(jsonObject);
         notifyDataSetChanged();
+    }
+    public JSONObject getItem(int position){
+        return messages.get(position);
+    }
+
+    public List<JSONObject> getList(){
+        return messages;
     }
 
 
