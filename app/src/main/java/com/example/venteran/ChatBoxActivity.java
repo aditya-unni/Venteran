@@ -132,8 +132,11 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                         JSONObject user_data = new JSONObject(document.getData());
                         try {
                             String test_username = user_data.getString("username");
+                            Log.d("username", test_username);
                             if(username.equals(test_username)){
+
                                 user_role = user_data.getString("role");
+                                Log.d("role", user_role);
                                 ImageURIacessToken = user_data.getString("image");
                             }
                         } catch (JSONException e) {
@@ -248,7 +251,7 @@ public class ChatBoxActivity extends AppCompatActivity implements TextWatcher{
                 DateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     jsonObject.put("username", username);
-                    jsonObject.put("role", user_role);
+                    jsonObject.put("role", "General");
                     jsonObject.put("message", messageEdit.getText().toString());
                     jsonObject.put("timeStamp", format.format(date));
                     jsonObject.put("imageUrl", ImageURIacessToken);
