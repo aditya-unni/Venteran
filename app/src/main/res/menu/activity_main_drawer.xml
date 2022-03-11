@@ -19,9 +19,9 @@
             android:icon="@drawable/ic_myprofile"
             android:title="@string/menu_myprofile" />
         <item
-            android:id="@+id/nav_addfriends"
+            android:id="@+id/nav_aboutus"
             android:icon="@drawable/ic_addfriend"
-            android:title="@string/menu_addfriends" />
+            android:title="@string/menu_aboutus" />
         <item
             android:id="@+id/nav_groups"
             android:icon="@drawable/ic_groups"

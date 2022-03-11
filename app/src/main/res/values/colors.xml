@@ -20,4 +20,5 @@
     <color name="red">#FF0000</color>
     <color name="lightgrey">#808183</color>
     <color name="darkgrey">#59595B</color>
+    <color name="selected">#305679</color>
 </resources>

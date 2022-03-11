@@ -9,6 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -47,15 +48,18 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         String icon = remoteMessage.getData().get("icon");
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");
+        String username = remoteMessage.getData().get("username");
+        String image = remoteMessage.getData().get("image");
 
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
         Intent intent = new Intent(this, SpecificChat.class);
-
-        intent.putExtra("username",user);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("userid", user);
+//        intent.putExtras(bundle);
+        intent.putExtra("username",username);
         intent.putExtra("receiveruid",user);
-        intent.putExtra("imageuri","");
-
+        intent.putExtra("imageuri",image);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT);
         Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -80,15 +84,18 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         String icon = remoteMessage.getData().get("icon");
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");
+        String username = remoteMessage.getData().get("username");
+        String image = remoteMessage.getData().get("image");
 
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
         Intent intent = new Intent(this, SpecificChat.class);
-
-        intent.putExtra("username",user);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("userid", user);
+//        intent.putExtras(bundle);
+        intent.putExtra("username",username);
         intent.putExtra("receiveruid",user);
-        intent.putExtra("imageuri","");
-
+        intent.putExtra("imageuri",image);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT);
 

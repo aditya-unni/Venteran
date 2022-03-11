@@ -33,6 +33,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
@@ -58,7 +61,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
 
     private String enteredmessage;
     Intent intent;
-    String mrecievername,sendername,mrecieveruid,msenderuid;
+    String mrecievername,sendername,mrecieveruid,msenderuid, msenderimage;
     private FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     String senderroom,recieverroom;
@@ -154,6 +157,19 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
             }
         });
 
+        DocumentReference tempReference1 = FirebaseFirestore.getInstance().collection("Users").document(msenderuid);
+        tempReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    firebasemodel Firebasemodel = document.toObject(firebasemodel.class);
+                    if (document.exists()){
+                        msenderimage = Firebasemodel.getImage();
+                    }
+                }
+            }
+        });
 
 
         DatabaseReference databaseReference=firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
@@ -192,7 +208,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
 
         mnameofspecificuser.setText(mrecievername);
         String uri=intent.getStringExtra("imageuri");
-        if(uri==null)
+        if(uri.isEmpty())
         {
             Toast.makeText(getApplicationContext(),"null is recieved",Toast.LENGTH_SHORT).show();
         }
@@ -278,7 +294,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Token token = snapshot.getValue(Token.class);
                     Data data = new Data(fuser.getUid(), R.drawable.ic_image_venteranlogo, username+": "+message,
-                            "New Message", mrecieveruid);
+                            "New Message", mrecieveruid, sendername, msenderimage);
 
                     Sender sender = new Sender(data, token.getToken());
 
@@ -342,26 +358,28 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                                     deletemessage.setDeleted(true);
                                 }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
 
                                 }
                             });
-                            DatabaseReference deleterecref = firebaseDatabase.getReference().child("chats").child(recieverroom).child("messages");
-                            Query recquery = deleterecref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
-                            recquery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for(DataSnapshot ds:snapshot.getChildren()){
-                                        ds.getRef().removeValue();
+                            if(deletemessage.getSenderId().equals(firebaseAuth.getUid())) {
+                                DatabaseReference deleterecref = firebaseDatabase.getReference().child("chats").child(recieverroom).child("messages");
+                                Query recquery = deleterecref.orderByChild("timestamp").equalTo(deletemessage.getTimestamp());
+                                recquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot ds : snapshot.getChildren()) {
+                                            ds.getRef().removeValue();
+                                        }
                                     }
-                                }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
 
-                                }
-                            });
+                                    }
+                                });
+                            }
                             messagesAdapter.notifyDataSetChanged();
                         }
                     }
@@ -416,7 +434,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         if (actionMode==null){
             actionMode=startActionMode(actionModeCallBack);
         }
-        Messages selectedmessage =messagesArrayList.get(position);
+        Messages selectedmessage = messagesArrayList.get(position);
         messagesArrayList.get(position).setSelected(!selectedmessage.isSelected());
         messagesAdapter.notifyDataSetChanged();
 
