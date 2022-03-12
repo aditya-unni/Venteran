@@ -13,7 +13,8 @@
         android:fontFamily="@font/alatsi"
         android:text="@string/emergency_head"
         android:textColor="@color/aquablue"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/emergency_txt"

@@ -104,6 +104,7 @@
             android:layout_marginStart="16dp"
             android:background="@drawable/messagebackground"
             android:hint="Start Typing"
+            android:fontFamily="@font/alatsi"
             android:inputType="text"
             android:maxLines="6"
             tools:ignore="Autofill" />

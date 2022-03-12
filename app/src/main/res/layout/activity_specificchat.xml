@@ -100,7 +100,6 @@
         android:layout_marginBottom="5dp"
         android:background="@drawable/messagebackground"
         android:hint="Type a message"
-        android:fontFamily="@font/alatsi"
         android:paddingLeft="20dp"
         android:paddingEnd="10dp"
         android:textAlignment="textStart"

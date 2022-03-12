@@ -19,21 +19,21 @@
             android:icon="@drawable/ic_myprofile"
             android:title="@string/menu_myprofile" />
         <item
-            android:id="@+id/nav_aboutus"
-            android:icon="@drawable/ic_addfriend"
-            android:title="@string/menu_aboutus" />
-        <item
             android:id="@+id/nav_groups"
             android:icon="@drawable/ic_groups"
             android:title="@string/menu_groups" />
+        <item
+            android:id="@+id/nav_emergency"
+            android:icon="@drawable/ic_emergency"
+            android:title="@string/menu_emergency" />
         <item
             android:id="@+id/nav_contactus"
             android:icon="@drawable/ic_contactus"
             android:title="@string/menu_contactus" />
         <item
-            android:id="@+id/nav_emergency"
-            android:icon="@drawable/ic_emergency"
-            android:title="@string/menu_emergency" />
+            android:id="@+id/nav_aboutus"
+            android:icon="@drawable/ic_about_us_"
+            android:title="@string/menu_aboutus" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"

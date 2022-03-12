@@ -37,6 +37,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:text="Edit Your Profile"
+        android:fontFamily="@font/alatsi"
         android:textColor="@color/aquablue"
         android:textSize="30sp"
         android:textStyle="bold">
@@ -77,6 +78,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="5dp"
         android:text="Click here to update your profile"
+        android:fontFamily="@font/alatsi"
         android:textColor="#303030"
         android:textSize="17dp">
 
