@@ -36,7 +36,6 @@
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:text="20:09"
-            android:fontFamily="@font/alatsi"
             android:textColor="#434343"
             android:textSize="10sp" />
 
