@@ -2,6 +2,7 @@ package com.example.venteran;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ import com.example.venteran.Notification.MyResponse;
 import com.example.venteran.Notification.Sender;
 import com.example.venteran.Notification.Token;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,9 +38,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.auth.User;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -87,6 +94,9 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
     boolean notify = false;
     private ActionMode actionMode;
 
+    FirebaseFirestore firebaseFirestore;
+    int points;
+
 
 
     @Override
@@ -125,6 +135,7 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
         });
 
         firebaseAuth=FirebaseAuth.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance("https://venteran-56fbc-default-rtdb.asia-southeast1.firebasedatabase.app/");
         calendar=Calendar.getInstance();
         simpleDateFormat=new SimpleDateFormat("hh:mm a");
@@ -384,9 +395,57 @@ public class SpecificChat extends AppCompatActivity implements MessagesAdapter.O
                             messagesAdapter.notifyDataSetChanged();
                         }
                     }
-                    Toast.makeText(getApplicationContext(), "Message deleted", Toast.LENGTH_SHORT).show();
                     mode.finish(); // Action picked, so close the CAB
+                    Toast.makeText(getApplicationContext(), "Message deleted", Toast.LENGTH_SHORT).show();
                     return true;
+
+                case R.id.report_user:
+                    firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    JSONObject user_data = new JSONObject(document.getData());
+                                    try {
+                                        String userId = mrecieveruid;
+                                        String test_uid = user_data.getString("uid");
+                                        if(test_uid.equals(userId)){
+                                            points = user_data.getInt("points");
+                                            points -= 1;
+                                            if(points < 10) {
+                                                document.getReference().update("role", "General").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                    }
+                                                });
+                                            }
+                                            else {
+                                                document.getReference().update("role", "Counsellor").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                    }
+                                                });
+                                            }
+                                            document.getReference().update("points",points).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                }
+                                            });
+                                            break;
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            } else {
+                                Log.d("Document_Error", "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+                    mode.finish();
+                    Toast.makeText(getApplicationContext(), "Message Reported!",Toast.LENGTH_SHORT).show();
+                    return true;
+
                 default:
                     return false;
             }

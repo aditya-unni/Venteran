@@ -230,9 +230,7 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        Toast.makeText(getContext(),
-                "Breh",
-                Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -268,6 +266,36 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
             super.onMessage(webSocket, text);
                 getActivity().runOnUiThread(()->{
                     try{
+                        firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        JSONObject user_data = new JSONObject(document.getData());
+                                        Log.d("document", document.getData().toString());
+                                        try {
+                                            String test_uid = user_data.getString("uid");
+                                            if(test_uid.equals(firebaseAuth.getUid())){
+                                                username = user_data.getString("username");
+                                                Log.d("username", username);
+                                                user_role = user_data.getString("role");
+                                                Log.d("role", user_role);
+                                                ImageURIacessToken = user_data.getString("image");
+                                                Log.d("fetched_image",ImageURIacessToken);
+                                                break;
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+//                                    Log.d("User_Role", document.getData().toString());
+                                    }
+
+                                } else {
+                                    Log.d("Document_Error", "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
+
                         JSONObject textData = new JSONObject(text);
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put("uid", textData.getString("uid"));
@@ -375,6 +403,22 @@ public class ChatBoxActivity extends Fragment implements TextWatcher,GlobalChatA
                                         if(test_uid.equals(userId)){
                                             points = user_data.getInt("points");
                                             points -= 1;
+                                            if(points < 10) {
+                                                document.getReference().update("role", "General").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        user_role = "General";
+                                                    }
+                                                });
+                                            }
+                                            else {
+                                                document.getReference().update("role", "Counsellor").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        user_role = "Counsellor";
+                                                    }
+                                                });
+                                            }
                                             document.getReference().update("points",points).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
